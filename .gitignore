@@ -1,0 +1,15 @@
+!.gitignore
+target
+bin
+
+*.class
+*~
+.project
+.classpath
+.settings/*/*
+.settings
+.DS_Store
+*.log
+
+*.jar
+metrics/
