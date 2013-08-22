@@ -1,8 +1,7 @@
-// Testing AVL tree
-package avl;
+package doublyLinkedList;
 
 public class Test {
 	public static void main(String[] args) {
-		AVL tree = new AVL();
 	}
+
 }

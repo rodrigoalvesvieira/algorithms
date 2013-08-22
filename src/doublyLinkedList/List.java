@@ -2,7 +2,7 @@
 // Rodrigo Alves @ CIn/UFPE
 // http://en.wikipedia.org/wiki/Doubly_linked_list
 
-package list;
+package doublyLinkedList;
 
 class Node {
 	Node prev;
