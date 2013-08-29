@@ -14,6 +14,7 @@ Implementations of abstract data types in Java for the Algorithms and Data Struc
 
 ## Algorithms
 
+* Algorithms Implementations at Princeton University http://algs4.cs.princeton.edu/code/
 * Algorithms at Princeton University http://algs4.cs.princeton.edu/home/
 * IME/USP Análise de Algoritmos http://www.ime.usp.br/~pf/analise_de_algoritmos/index.html
 * Algorithms Course Materials http://compgeom.cs.uiuc.edu/~jeffe/teaching/algorithms/
