@@ -86,7 +86,7 @@ class List {
     }
    
     public int getSize() {
-    	return size;
+    	return this.size;
     }
 
     public boolean isEmpty(){

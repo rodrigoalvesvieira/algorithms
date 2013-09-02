@@ -8,30 +8,53 @@ class Node {
 	Node next;
 	int value;
 
-	public Node(int v) {
+	public Node(int value) {
 		this.next = null;
-		this.value = v;
+		this.value = value;
 	}
 }
 
 class List {
-	private Node begin;
+	private Node end;
 	private int size;
 	
-	public List() {        
-		this.begin = null;
+	public List() { 
+		this.end = null;
  	    this.size = 0;
     }
 	
 	public int getSize() {
-		return size;
+		return this.size;
 	}
+	
+	public void push(int v){
+        Node node = new Node(v);
+    	
+        if (this.isEmpty()) {                    
+    		this.end = node;
+    	} else {
+    		this.end.next = node;
+    		node.next = this.end;
+    		this.end = node;
+    	}
+    	
+    	this.size++;
+    }
 	
 	public boolean isEmpty(){
 		if (this.size == 0) {
 			return true;
 		} else {
 			return false;
+		}
+	}
+	
+	public void print() {
+		Node helper = this.end;
+		
+		while(helper != null) {
+			System.out.print(helper.value + " ");
+			helper = helper.next;
 		}
 	}
 }
