@@ -27,21 +27,22 @@ class List {
     	this.size = 0;
     }
    
-    public void addElementFim(int v){
-    	Node newNode = new Node(v);
+    public void push(int v){
+    	Node node = new Node(v);
+    	
     	if (this.isEmpty()) {                    
-    		this.begin = newNode;
-    		this.end = newNode;
+    		this.begin = node;
+    		this.end = node;
     	} else {
-    		this.end.next = newNode;
-    		newNode.prev = this.end;
-    		this.end = newNode;
+    		this.end.next = node;
+    		node.prev = this.end;
+    		this.end = node;
     	}
     	
     	this.size++;
     }
    
-    public void addElementIni(int v){
+    public void pushStart(int v){
     	Node novoNo = new Node(v);
     	if (this.isEmpty()) {                    
     		this.begin = novoNo;
@@ -67,7 +68,7 @@ class List {
     	Node helper;
     	helper = this.end.prev;
     	this.end = helper;
-    	this.addElementIni(this.getEndValue());
+    	this.pushStart(this.getEndValue());
     	helper = this.end.prev;
     	this.end = null;
     	this.end = helper;
@@ -78,7 +79,7 @@ class List {
     	Node aux;
     	aux = this.begin.next;
     	this.begin = aux;
-    	this.addElementFim(this.getBeginValue());
+    	this.push(this.getBeginValue());
     	aux = this.begin.next;
     	this.begin = null;
     	this.begin = aux;
@@ -90,10 +91,16 @@ class List {
     }
 
     public boolean isEmpty(){
-    	if (this.size == 0) {
-    		return true;
-    	} else {
-    		return false;
-        }
-    }
+		if (this.size == 0) return true;
+		return false;
+	}
+    
+    public void print() {
+		Node helper = this.begin;
+		
+		while(helper != null) {
+			System.out.print(helper.value + " ");
+			helper = helper.next;
+		}
+	}
 }

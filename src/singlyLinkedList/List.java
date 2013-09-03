@@ -15,11 +15,11 @@ class Node {
 }
 
 class List {
-	private Node end;
+	public Node first;
 	private int size;
 	
-	public List() { 
-		this.end = null;
+	public List() {
+		this.first = null;
  	    this.size = 0;
     }
 	
@@ -27,34 +27,69 @@ class List {
 		return this.size;
 	}
 	
-	public void push(int v){
+	public void push(int v) {
         Node node = new Node(v);
     	
-        if (this.isEmpty()) {                    
-    		this.end = node;
+        if (this.isEmpty()) {           
+    		this.first = node;
     	} else {
-    		this.end.next = node;
-    		node.next = this.end;
-    		this.end = node;
+    		Node helper = this.first;
+    		
+    		while(helper.next != null) {
+    			if (helper.next != null) helper = helper.next;
+    		}
+    		helper.next = node;
     	}
     	
     	this.size++;
     }
 	
-	public boolean isEmpty(){
-		if (this.size == 0) {
-			return true;
+	public void pushAfter(Node node, int value) {
+		Node newNode = new Node(value);
+		Node theNext = node.next;
+		node.next = newNode;
+		newNode.next = theNext;
+		this.size++;
+	}
+	
+	public void pop() {
+		Node last = this.first;
+		Node prev = null;
+		
+		while (last.next != null) {
+			if (last != null) {
+				prev = last;
+				last = last.next;
+			}
+		}
+		
+		prev.next = null;
+		last = null;
+		this.size--;
+	}
+	
+	public Node search(Node n, int key) {
+		if (n == null) return null;
+		
+		if (n.value == key) {
+			return n;
 		} else {
-			return false;
+			return search(n.next, key);
 		}
 	}
 	
+	public boolean isEmpty(){
+		if (this.size == 0) return true;
+		return false;
+	}
+	
 	public void print() {
-		Node helper = this.end;
+		Node helper = this.first;
 		
 		while(helper != null) {
 			System.out.print(helper.value + " ");
 			helper = helper.next;
 		}
+		System.out.println();
 	}
 }
