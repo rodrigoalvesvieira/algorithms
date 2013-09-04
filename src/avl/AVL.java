@@ -40,7 +40,7 @@ public class AVL {
 		}
 	}
 	
-	int getHeight(AVL node) {
+	static int getHeight(AVL node) {
 		if (node == null) return 0;
 	
 		int leftHeight = getHeight(node.leftChild);
@@ -48,16 +48,16 @@ public class AVL {
 		return leftHeight > rightHeight ? (leftHeight + 1) : (rightHeight + 1);
 	}
 	
-	int maximal(int a, int b) {
+	static int maximal(int a, int b) {
 		return (a > b)? a : b;
 	}
 	
-	int balancingFactor(AVL root) {
+	static int balancingFactor(AVL root) {
 		if (root == null) return 0;
 		return getHeight(root.leftChild) - getHeight(root.rightChild);
 	}
 	
-	// Creates a new node from with a identifier and a value
+	static // Creates a new node from with a identifier and a value
 	// (with both the left and right child null)
 	AVL newNode(int i, int v) {
 		AVL node = new AVL();
@@ -91,7 +91,7 @@ public class AVL {
 		}
 	}
 	
-	AVL rotateRight(AVL node) {
+	static AVL rotateRight(AVL node) {
 		AVL a = node.leftChild;
 		AVL b = a.rightChild;
 		
@@ -107,7 +107,7 @@ public class AVL {
 		return a;
 	}
 	
-	AVL rotateLeft(AVL node) {
+	static AVL rotateLeft(AVL node) {
 		AVL a = node.rightChild;
 		AVL b = a.leftChild;
 		
@@ -148,7 +148,7 @@ public class AVL {
 		}
 	}
 	
-	AVL insert(AVL node, int i, int value, int level, int rotation, int n) {
+	static AVL insert(AVL node, int i, int value, int level, int rotation, int n) {
 		level = n; // if null, it's the head
 		if (node == null) return newNode(i, value);
 		
