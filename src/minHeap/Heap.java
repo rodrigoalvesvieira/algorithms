@@ -9,8 +9,8 @@ class Heap {
     int size;
 
     public Heap() {
-        size = 0;
-        heap = new int[1000];
+        this.size = 0;
+        this.heap = new int[1000];
     }
 
     int parent(int i) {
@@ -33,16 +33,15 @@ class Heap {
         int l = left(i);
         int r = right(i);
         int smallest;
-        if (l < size && (heap[l] < heap[i]))
+        if (l < size && (heap[l] < heap[i])) {
             smallest = l;
-        else
+        } else {
             smallest = i;
+        }
+        
+        if (r < size && heap[r] < heap[smallest]) smallest = r;
 
-        if (r < size && heap[r] < heap[smallest])
-            smallest = r;
-
-        if (smallest != i)
-        {
+        if (smallest != i) {
             int temp = heap[i];
             heap[i] = heap[smallest];
             heap[smallest] = temp;
@@ -88,8 +87,7 @@ class Heap {
         }
     }
 
-    void siftUp(int i)
-    {
+    void siftUp(int i) {
         int par;
         int temp;
         if (i != 0) {

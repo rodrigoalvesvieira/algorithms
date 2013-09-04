@@ -33,16 +33,15 @@ class Heap {
         int l = left(i);
         int r = right(i);
         int smallest;
-        if (l < size && (heap[l] < heap[i]))
+        
+        if (l < size && (heap[l] < heap[i])) {
             smallest = l;
-        else
+        } else {
             smallest = i;
+        }
+        if (r < size && heap[r] < heap[smallest]) smallest = r;
 
-        if (r < size && heap[r] < heap[smallest])
-            smallest = r;
-
-        if (smallest != i)
-        {
+        if (smallest != i) {
             int temp = heap[i];
             heap[i] = heap[smallest];
             heap[smallest] = temp;
@@ -88,8 +87,7 @@ class Heap {
         }
     }
 
-    void siftUp(int i)
-    {
+    void siftUp(int i) {
         int par;
         int temp;
         if (i != 0) {

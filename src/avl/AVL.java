@@ -7,7 +7,7 @@ package avl;
 public class AVL {
 	int noElements = 0;
 	int level = 0;
-	int value = 0;
+	int value;
 	int rotation = 0;
 	
 	AVL leftChild;
@@ -17,7 +17,7 @@ public class AVL {
 	int height;
 	
 	public AVL() {
-		this.value = this.height = this.identifier = 0;
+		this.height = this.identifier = 0;
 		this.leftChild = null;
 		this.rightChild = null;
 	}
