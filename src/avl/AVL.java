@@ -67,47 +67,27 @@ public class AVL {
 		return node;
 	}
 	
-	void preOrder(boolean head) {
-		head = true;
-		
-		if (this != null) {
-			if (head) {
-				System.out.println(this.identifier);
-			} else {
-				System.out.println(this.identifier);
-				
-				this.leftChild.preOrder(false);
-				this.rightChild.preOrder(false);
-			}
+	public static void preOrder(AVL root) {
+	  	if (root != null) {
+	  		System.out.print(root.value + " ");
+	  		preOrder(root.leftChild);
+	  		preOrder(root.rightChild);
 		}
 	}
 	
-	void inOrder(boolean head) {
-		head = true;
-		
-		if (this != null) {
-			if (head) {
-				System.out.println(this.identifier);
-			} else {				
-				this.leftChild.inOrder(false);
-				System.out.println(this.identifier);
-				this.rightChild.inOrder(false);
-			}
+	public static void inOrder(AVL root) {
+	  	if (root != null) {
+	  		inOrder(root.leftChild);
+	  		System.out.print(root.value + " ");
+	  		inOrder(root.rightChild);
 		}
 	}
 	
-	void postOrder(boolean head) {
-		head = true;
-		
-		if (this != null) {
-			if (head) {
-				System.out.println(this.identifier);
-			} else {				
-				this.leftChild.inOrder(false);
-				this.rightChild.inOrder(false);
-
-				System.out.println(this.identifier);
-			}
+	public static void postOrder(AVL root) {
+	  	if (root != null) {
+	  		postOrder(root.leftChild);
+	  		postOrder(root.rightChild);
+	  		System.out.print(root.value + " ");
 		}
 	}
 	
