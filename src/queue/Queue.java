@@ -1,4 +1,4 @@
-// Queue implementation
+// Queue (FIFO) implementation
 // Rodrigo Alves @ CIn/UFPE
 // http://en.wikipedia.org/wiki/Queue_(data_structure)
 
@@ -23,7 +23,11 @@ class Queue {
         if (this.top == null) {
         	this.top = newNode;
         } else {
-		    this.top.next = newNode;
+        	Node helper = this.top;
+        	while (helper.next != null) {
+		    	if (helper.next != null) helper = helper.next;
+		    }
+        	helper.next = newNode;		    
 		}
 	}
 
@@ -31,24 +35,9 @@ class Queue {
     	if (top == null) {
     		return -1;
         } else {
-            Node current = top.next;
-            Node previous = top;
-            int v = 0;
-
-            if (previous.next == null) {
-                v = top.value;
-                top = null;
-                return v;
-            } else {
-                while (current.next != null) {
-                    current = current.next;
-                    previous = previous.next;
-                }
-
-                v = current.value;
-                previous.next = null;
-                return v;
-            }
+            int res = this.top.value;
+            this.top = this.top.next;
+            return res;
         }
     }
 
@@ -77,6 +66,8 @@ class Queue {
 		if (node != null) {
 			System.out.print(node.value + " ");
 			print(node.next);
+		} else {
+			System.out.println();
 		}
 	}
 }

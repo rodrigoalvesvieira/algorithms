@@ -1,4 +1,5 @@
 // Testing Queue
+// http://www.cs.usfca.edu/~galles/visualization/QueueLL.html
 
 package queue;
 
@@ -9,13 +10,16 @@ public class Test {
 		queue.enqueue(10);
 		queue.enqueue(30);
 		queue.enqueue(42);
+		queue.enqueue(10);
+		queue.enqueue(77);
+		queue.enqueue(666);
 		
-//		System.out.println(queue.top.value);
-//		System.out.println(queue.getLastElement());
+		queue.print();
+
+		queue.dequeue();
+		queue.print();
 		
 		queue.dequeue();
-		queue.dequeue();
-		
 		queue.print();
 	}
 }
