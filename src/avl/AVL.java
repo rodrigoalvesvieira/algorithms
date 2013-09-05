@@ -121,7 +121,7 @@ public class AVL {
 	}
 	
 	// Gets smaller value from the left of a sub-tree
-	AVL getSmaller(AVL node) {
+	static AVL getSmaller(AVL node) {
 		AVL helper = node;
 		while (helper.leftChild != null) {
 			helper = helper.leftChild;
@@ -199,7 +199,7 @@ public class AVL {
 		return node;
 	}
 	
-	AVL remove(AVL root, int identifier) {
+	public static AVL remove(AVL root, int identifier) {
 		if (root == null) return root; // nothing to do
 		
 		// Smaller value, get sub-tree to the left

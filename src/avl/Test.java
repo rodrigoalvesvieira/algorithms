@@ -9,6 +9,8 @@ public class Test {
 		AVL.insert(tree, 1, 12, 0, 0, 10);
 		AVL.insert(tree, 1, 21, 0, 0, 10);
 		
+		AVL.remove(tree, 21);
+		
 		AVL.inOrder(tree);
 		
 	}
