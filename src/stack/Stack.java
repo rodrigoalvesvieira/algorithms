@@ -5,85 +5,75 @@
 package stack;
 
 class Node {
+	Node prev;
 	Node next;
-	char value;
-	int numbers;
+	int value;
 
-	public Node(char v) {
-		this.next = null;
-		this.value = v;
-	}
-
-	public Node(int v) {
-		this.next = null;
-		this.numbers = v;
+	public Node(int value) {
+		this.prev = this.next = null;
+		this.value = value;
 	}
 }
 
 class Stack {
-	private Node top;
+	public Node begin;
+	public Node top;
 	private int size;
-
+	
 	public Stack() {
-		this.top = null;
+		this.begin = this.top = null;
 		this.size = 0;
 	}
-
-	public void addElement(char v) {
-		Node newNode = new Node(v);
+	
+	public void push(int n) {
+		Node newNode = new Node(n);
+		
 		if (this.isEmpty()) {
-			this.top = newNode;
+			this.begin = this.top = newNode;
 		} else {
-			Node helper;
-			helper = newNode;
-			helper.next = this.top;
+			Node helper = this.top;
+			this.top.prev = helper;
+			this.top.next = newNode;
 			this.top = newNode;
 		}
 		this.size++;
 	}
+	
+	public int pop() {
+		if (!this.isEmpty()) {
+			int res = this.top.value;
+			
+			System.out.println("valor do top: " + this.top.value);
+			
+			this.top = this.top.prev;
 
-	public void addElementNum(int v) {
-		Node newNode = new Node(v);
-		if (this.isEmpty()) {
-			this.top = newNode;
-		} else {
-			Node helper;
-			helper = newNode;
-			helper.next = this.top;
-			this.top = newNode;
+			System.out.println("valor do anterior ao top: " + this.top.prev.value);
+			
+			this.size--;
+			return res;	
 		}
-		this.size++;
-	}
-
-	public char pop() {
-		char value;
-		value = this.top.value;
-		this.top = this.top.next;
-		return value;
-	}
-
-	public int popNum() {
-		int value;
-		value = this.top.numbers;
-		this.top = this.top.next;
-		return value;
-	}
-
-	public char getTopValue() {
-		char operator;
-		operator = this.top.value;
-		return operator;
+		
+		return -1;
 	}
 
 	public int getSize() {
-		return size;
+		return this.size;
 	}
 
 	public boolean isEmpty() {
-		if (this.top == null) {
-			return true;
+		return this.begin == null;
+	}
+	
+	public void print() {
+		print(this.begin);
+	}
+	
+	public void print(Node node) {
+		if (node != null) {
+			System.out.print(node.value + " ");
+			print(node.next);
 		} else {
-			return false;
+			System.out.println();
 		}
 	}
 }
