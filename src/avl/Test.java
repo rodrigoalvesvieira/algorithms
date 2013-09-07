@@ -1,5 +1,8 @@
-// Testing AVL tree
-
+/**
+ * Testing AVL tree
+ * Animation available at http://www.qmatica.com/DataStructures/Trees/AVL/AVLTree.html
+ * To better see it in action. Click Options and enable "factors"
+ */
 package avl;
 
 public class Test {
@@ -12,10 +15,10 @@ public class Test {
 		tree = AVL.insert(60, tree);
 		tree = AVL.insert(90, tree);
 		tree = AVL.insert(55, tree);
+		tree = AVL.insert(19, tree);
 		
 		System.out.println("Pre order:");
-		AVL.preOrder(tree);
-		
+		AVL.postOrder(tree);
 		System.out.println();
 		
 		tree = AVL.remove(tree, 90);
@@ -35,5 +38,10 @@ public class Test {
 		
 		System.out.println("Post order:");
 		AVL.postOrder(tree);
+		System.out.println();
+		
+		// Searching for a node in the tree which has the value 30 as key
+		Node a = AVL.search(tree, 30);
+		System.out.println("Node key=>" + a.key + ", balance=>" + a.balance);
 	}
 }

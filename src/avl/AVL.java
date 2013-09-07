@@ -48,6 +48,20 @@ public class AVL {
 		}
 	}
 	
+	public static Node search(Node root, int value) {
+		if (root == null) return null;
+		
+		if (root.key == value) {
+			return root;
+		} else if (root.key < value) {
+			return search(root.rightChild, value);
+		} else if (root.key > value) {
+			return search(root.leftChild, value);
+		}
+		
+		return null;
+	}
+	
 	public static Node simpleRightRotation(Node root){
 		Node A  = root;
 		Node B = root.leftChild;
