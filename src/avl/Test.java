@@ -1,17 +1,39 @@
 // Testing AVL tree
+
 package avl;
 
 public class Test {
 	public static void main(String[] args) {
-		AVL tree = new AVL();
+		Node tree = null;
 		
-		AVL.insert(tree, 1, 20, 0, 0, 10);
-		AVL.insert(tree, 1, 12, 0, 0, 10);
-		AVL.insert(tree, 1, 21, 0, 0, 10);
+		tree = AVL.insert(50, tree);
+		tree = AVL.insert(30, tree);
+		tree = AVL.insert(70, tree);
+		tree = AVL.insert(60, tree);
+		tree = AVL.insert(90, tree);
+		tree = AVL.insert(55, tree);
 		
-		AVL.remove(tree, 21);
+		System.out.println("Pre order:");
+		AVL.preOrder(tree);
+		
+		System.out.println();
+		
+		tree = AVL.remove(tree, 90);
+		tree = AVL.recalcularBalance(tree);
+		tree = AVL.remove(tree, 70);
+		tree = AVL.recalcularBalance(tree);
+		
+		System.out.println("Pre order:");
+		AVL.preOrder(tree);
+		System.out.println();
+		
+		System.out.println("Order:");
+		tree = AVL.insert(11, tree);
 		
 		AVL.inOrder(tree);
+		System.out.println();
 		
+		System.out.println("Post order:");
+		AVL.postOrder(tree);
 	}
 }

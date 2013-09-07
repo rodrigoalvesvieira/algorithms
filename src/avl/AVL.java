@@ -1,266 +1,301 @@
-// AVL Tree (Adelson-Velskii and Landis' tree) implementation
-// Rodrigo Alves @ CIn/UFPE
-// http://en.wikipedia.org/wiki/AVL_tree
-
+/**
+ * AVL Tree (Adelson-Velskii and Landis' tree) implementation
+ * 
+ * A balanced binary tree developed to preserve the logarithmic property through the
+ * rotation of its nodes
+ * 
+ * Rodrigo Alves @ CIn/UFPE
+ * http://en.wikipedia.org/wiki/AVL_tree
+ */
 package avl;
 
-public class AVL {
-	int noElements = 0;
-	int level = 0;
-	int value;
-	int rotation = 0;
+class Node {
+	int key;
+	int balance;
+	Node leftChild;
+	Node rightChild;
 	
-	AVL leftChild;
-	AVL rightChild;
-	
-	int identifier;
-	int height;
-	
-	public AVL() {
-		this.height = this.identifier = 0;
+	public Node(int value){
+		this.key = value;
+		this.balance = 0;
 		this.leftChild = null;
 		this.rightChild = null;
 	}
-	
-	public AVL(int value) {
-		this.value = value;
-	}
-	
-	// Removes the minimal from the right and returns the "new" node
-	public AVL removeMinRight(AVL rightTree) {
-		AVL helper = new AVL();
-		
-		if (rightTree.leftChild == null) {	
-			helper = rightTree.rightChild;
-			rightChild = null;
-			return helper;
-		} else {
-			rightTree.leftChild = removeMinRight(rightTree.leftChild);
-			return rightTree;
-		}
-	}
-	
-	static int getHeight(AVL node) {
-		if (node == null) return 0;
-	
-		int leftHeight = getHeight(node.leftChild);
-		int rightHeight = getHeight(node.rightChild);
-		return leftHeight > rightHeight ? (leftHeight + 1) : (rightHeight + 1);
-	}
-	
-	static int maximal(int a, int b) {
-		return (a > b)? a : b;
-	}
-	
-	static int balancingFactor(AVL root) {
-		if (root == null) return 0;
-		return getHeight(root.leftChild) - getHeight(root.rightChild);
-	}
-	
-	static // Creates a new node from with a identifier and a value
-	// (with both the left and right child null)
-	AVL newNode(int i, int v) {
-		AVL node = new AVL();
-		node.identifier = i;
-		node.value = v;
-		node.height = 1;	
-		return node;
-	}
-	
-	public static void preOrder(AVL root) {
-	  	if (root != null) {
-	  		System.out.print(root.value + " ");
-	  		preOrder(root.leftChild);
-	  		preOrder(root.rightChild);
-		}
-	}
-	
-	public static void inOrder(AVL root) {
-	  	if (root != null) {
-	  		inOrder(root.leftChild);
-	  		System.out.print(root.value + " ");
-	  		inOrder(root.rightChild);
-		}
-	}
-	
-	public static void postOrder(AVL root) {
-	  	if (root != null) {
-	  		postOrder(root.leftChild);
-	  		postOrder(root.rightChild);
-	  		System.out.print(root.value + " ");
-		}
-	}
-	
-	static AVL rotateRight(AVL node) {
-		AVL a = node.leftChild;
-		AVL b = a.rightChild;
-		
-		// do the rotation
-		a.rightChild = node;
-		node.leftChild = b;
-		
-		// update height
-		node.height = maximal(getHeight(node.leftChild), getHeight(node.rightChild)) + 1;
-		a.height = maximal(getHeight(a.leftChild), getHeight(a.rightChild)) + 1;
-		
-		// returns the new node
-		return a;
-	}
-	
-	static AVL rotateLeft(AVL node) {
-		AVL a = node.rightChild;
-		AVL b = a.leftChild;
-		
-		a.leftChild = node;
-		node.rightChild = b;
-		
-		node.height = maximal(getHeight(node.leftChild), getHeight(node.rightChild)) + 1;
-		a.height = maximal(getHeight(a.leftChild), getHeight(a.rightChild)) + 1;
-		
-		return a;
-	}
-	
-	// Gets smaller value from the left of a sub-tree
-	static AVL getSmaller(AVL node) {
-		AVL helper = node;
-		while (helper.leftChild != null) {
-			helper = helper.leftChild;
-		}
-		
-		return helper;
-	}
-	
-	AVL search(AVL tree, int t, int level, int value, int n) {
-		level = n;
-		AVL helper = tree;
-		
-		if (tree == null) {
-			return null; // Empty tree, so nothing to do here. Move along
-		} else {
-			if (t > tree.identifier) {
-				helper = search(tree.rightChild, t, level, value, n+1);
-			} else if (t < tree.identifier) {
-				helper = search(tree.leftChild, t, level, value, n+1);
-			} else {
-				value = helper.value;
-			}
-			return helper;
-		}
-	}
-	
-	static AVL insert(AVL node, int i, int value, int level, int rotation, int n) {
-		level = n; // if null, it's the head
-		if (node == null) return newNode(i, value);
-		
-		if (i < node.identifier) {
-			node.leftChild = insert(node.leftChild, i, value, level, rotation, n+1);
-		} else {
-			node.rightChild = insert(node.rightChild, i, value, level, rotation, n+1);
-		}
-		
-		// update height
-		node.height = maximal(getHeight(node.leftChild), getHeight(node.rightChild)) + 1;
-		
-		// check if balanced
-		int balance = balancingFactor(node);
-		
-		// If not balanced, there are 4 possibilities
-		// Heavy to the left, right rotation
-		if (balance > 1 && i < node.leftChild.identifier) {
-			level -= 1;
-			rotation = 1;
-			return rotateRight(node);
-		}
-		
-		// Heavy to the right, left rotation
-		if (balance < -1 && i > node.rightChild.identifier) {
-			rotation = 2;
-			level -= 1;
-			return rotateLeft(node);
-		}
-		
-		// Double rotation to the right
-		if (balance > 1 && i > node.leftChild.identifier) {
-			rotation = 3;
-			level -= 2;
-			node.leftChild = rotateLeft(node.leftChild);
-			return rotateRight(node);
-		}
-		
-		// Double rotation to the left
-		if (balance < -1 && i < node.rightChild.identifier) {
-			rotation = 4;
-			level -= 2;
-			node.rightChild = rotateRight(node.rightChild);
-			return rotateLeft(node);
-		}
-		
-		// Returns updated tree
-		return node;
-	}
-	
-	public static AVL remove(AVL root, int identifier) {
-		if (root == null) return root; // nothing to do
-		
-		// Smaller value, get sub-tree to the left
-		if (identifier < root.identifier) {
-			root.leftChild = remove(root.leftChild, identifier);
-		} else if (identifier > root.identifier) { // greater value, get sub-tree to the right
-			root.rightChild = remove(root.rightChild, identifier);
-			
-		} else { // found it!
-			// when it is got <= 1 sub-trees
-			if ((root.leftChild == null) || root.rightChild == null) {
-				AVL helper = (root.leftChild != null) ? root.leftChild : root.rightChild;
-			
-				// leaf nodes
-				if (helper == null) {
-					helper = root;
-					root = null;
-				} else { // node with 1 sub-tree
-					root = helper;
-				}
-			} else {
-				// Node with 2 sub-trees
-				AVL helper = getSmaller(root.rightChild);
-				// Copy information from the successors
-				
-				root.identifier = helper.identifier;
-				root.value = helper.value;
-				
-				// Deletes successor
-				root.rightChild = remove(root.rightChild, helper.identifier);
-			}
-		}
-		
-		// If node is null
-		if (root == null) return root;
-		
-		// Update height in node
-		root.height = maximal(getHeight(root.leftChild), getHeight(root.rightChild)) + 1;
-		
-		// Checks if the node is un-balanced
-		int balance = balancingFactor(root);
-		
-		// If loses balance, there are 4 possibilities
-		// Weights to the left, right rotation
-		if (balance > 1 && balancingFactor(root.leftChild) >= 0) return rotateRight(root);
-		
-		// Double rotation to the right
-		if (balance > 1 && balancingFactor(root.leftChild) < 0) {
-			root.leftChild = rotateLeft(root.leftChild);
-			return rotateRight(root);
-		}
-		
-		// Weights to the right, left rotation
-		if (balance < -1 && balancingFactor(root.rightChild) <= 0) return rotateLeft(root);
-	
-		// Double rotation to the left
-		if (balance < -1 && balancingFactor(root.rightChild) > 0) {
-			root.rightChild = rotateRight(root.rightChild);
-			return rotateLeft(root);
-		}
+}
 
+public class AVL {	
+	public static int abs(int x){
+		if (x < 0) {
+			return -x;
+		} else {
+			return x;
+		}
+	}
+	
+	public static int max(int a, int b){
+		if (a < b){
+			return b;
+		} else {
+			return a;
+		}
+	}
+	
+	public static int getHeight(Node root){
+		if (root == null) {
+			return -1;
+		} else {
+			return 1 + max(getHeight(root.leftChild), getHeight(root.rightChild));
+		}
+	}
+	
+	public static Node simpleRightRotation(Node root){
+		Node A  = root;
+		Node B = root.leftChild;
+		Node C = B.rightChild;;
+		B.rightChild = A;
+		A.leftChild = C;
+		
+		int helper1, helper2;
+		helper1 = 1 + getHeight(A.rightChild);
+		helper2 =  1 + getHeight(A.leftChild);
+		A.balance =  helper1 - helper2;
+		
+		helper1 = 1 + getHeight(B.rightChild);
+		helper2 =  1 + getHeight(B.leftChild);
+		B.balance =  helper1 - helper2;		
+		root = B;
+		
 		return root;
+	}
+	
+	public static Node doubleRightRotation(Node root){
+		Node A = root;
+		Node B = root.leftChild;
+		Node C = root.leftChild.rightChild;
+		Node D = root.leftChild.rightChild.leftChild;
+		Node E = root.leftChild.rightChild.rightChild;
+		
+		A.leftChild = E;
+		B.rightChild = D;
+		C.leftChild = B;
+		C.rightChild = A;
+		
+		int helper1, helper2;
+		
+		helper1 = 1 + getHeight(A.rightChild);
+		helper2 =  1 + getHeight(A.leftChild);
+		A.balance =  helper1 - helper2;
+		
+		helper1 = 1 + getHeight(B.rightChild);
+		helper2 = 1 + getHeight(B.leftChild);
+		B.balance =  helper1 - helper2;
+		
+		helper1 = 1 + getHeight(C.rightChild);
+		helper2 = 1 + getHeight(C.leftChild);
+		C.balance =  helper1 - helper2;
+		
+		root = C;
+		return root;
+	}
+	
+	public static Node simpleLeftRotation(Node tree){
+		Node A  = tree;
+		Node B = tree.rightChild;
+		Node C = B.leftChild;
+		
+		B.leftChild = A;
+		A.rightChild = C;
+
+		int helper1, helper2;
+		
+		helper1 = 1 + getHeight(A.rightChild);
+		helper2 =  1 + getHeight(A.leftChild);
+		A.balance = helper1 - helper2;
+		
+		helper1 = 1 + getHeight(B.rightChild);
+		helper2 =  1 + getHeight(B.leftChild);
+		B.balance = helper1 - helper2;
+		
+		tree = B;
+		return tree;
+	}
+	
+	public static Node doubleLeftRotation(Node root){
+		Node A = root;
+		Node B = A.rightChild;
+		Node C = B.leftChild;
+		Node D = C.rightChild;
+		Node E = C.leftChild;
+		
+		A.rightChild = E;
+		B.leftChild = D;
+		C.rightChild= B;
+		C.leftChild = A;
+		
+		int helper1, helper2;
+		
+		helper1 = 1 + getHeight(A.rightChild);
+		helper2 =  1 + getHeight(A.leftChild);
+		A.balance =  helper1 - helper2;
+		
+		helper1 = 1 + getHeight(B.rightChild);
+		helper2 = 1 + getHeight(B.leftChild);
+		B.balance =  helper1 - helper2;
+		
+		helper1 = 1 + getHeight(C.rightChild);
+		helper2 = 1 + getHeight(C.leftChild);
+		C.balance =  helper1 - helper2;
+		
+		root = C;
+		return root;
+	}
+	
+	public static Node insert(int value, Node root) {
+		if (root == null) {
+			root = new Node(value);
+		} else {
+			if (value < root.key) {
+				root.leftChild = insert(value, root.leftChild);
+				
+				int helper1, helper2;
+				
+				helper1 = 1 + getHeight(root.rightChild);
+				helper2 =  1 + getHeight(root.leftChild);
+				root.balance =  helper1 - helper2;
+				
+				// System.out.println(root.num + " => " + root.balance + " " + value);
+				if (root.balance == -2) {
+					if (root.leftChild.balance == -1) {
+						root = simpleRightRotation(root);
+					} else {
+						root = doubleRightRotation(root);
+					}
+				}
+			} else if (value > root.key) {
+				root.rightChild = insert(value, root.rightChild);
+				int helper1, helper2;
+				
+				helper1 = 1 + getHeight(root.rightChild);
+				helper2 =  1 + getHeight(root.leftChild);
+				root.balance =  helper1 - helper2;
+				
+				// Print the element to be inserted and its balancing factor
+				// System.out.println(arvore.num + " => " + arvore.balance + " " + valor);
+				
+				if (root.balance == 2 ){
+					if (root.rightChild.balance == 1 ){
+						root = simpleLeftRotation(root);
+					} else {
+						root = doubleLeftRotation(root);
+					}
+				}
+			}
+		}
+		return root;
+	}
+	
+	public static Node remove(Node root, int value) {
+		if (root == null) {
+			System.out.println("No element found!");
+		} else {
+			if (root.key == value) {
+				if (root.rightChild == null && root.leftChild == null ) {
+					root = null;
+				} else if (root.leftChild != null && root.rightChild == null) {
+					root = root.leftChild;
+				} else if (root.leftChild == null && root.rightChild != null) {
+					root = root.rightChild;
+				} else {							
+					// Removing using the next node
+					if (root.rightChild.leftChild == null) {
+						root.rightChild.leftChild = root.leftChild;
+						root = root.rightChild;
+					} else {
+						Node previous = root;
+						Node next = root.rightChild;
+						
+						while (next.leftChild != null) {
+							previous = next;
+							next = next.leftChild;
+						}
+						
+						previous.leftChild = next.rightChild;
+						next.leftChild = root.leftChild;
+						next.rightChild = root.rightChild;
+						root = next;
+					}
+				}
+			} else if (root.key < value) {
+				root.rightChild = remove(root.rightChild, value);
+			} else if (root.key > value) {
+				root.leftChild = remove(root.leftChild, value);
+			}
+		}
+		
+		return root;
+	}
+	
+	public static Node recalcularBalance(Node root){
+		if (root != null) {
+			root.leftChild = recalcularBalance(root.leftChild);
+			root.rightChild = recalcularBalance(root.rightChild);
+			
+			int helper1, helper2;
+			
+			helper1 = 1 + getHeight(root.rightChild);
+			helper2 =  1 + getHeight(root.leftChild);
+			root.balance =  helper1 - helper2;
+			
+			if (root.balance == 2) {
+				if (root.rightChild.balance == 1) {
+					root = simpleLeftRotation(root);
+				}else {
+					root = doubleLeftRotation(root);
+				}
+			} else if (root.balance == -2) {
+				if (root.leftChild.balance == -1) {
+					root = simpleRightRotation(root);
+				} else {
+					root = doubleRightRotation(root);
+				}	
+			}
+		}
+		return root;
+	}
+	
+	/**
+	 * Walks the tree in the (root-left-right) fashion
+	 * @param root
+	 */
+	public static void preOrder(Node root) {
+		if (root != null) {
+			System.out.print("(" + root.key +" , "+ root.balance + ") " );
+			preOrder(root.leftChild);
+			preOrder(root.rightChild);
+		}
+	}
+	
+	/**
+	 * Walks the tree in the (left-root-right) fashion
+	 * @param root
+	 */
+	public static void inOrder(Node root) {
+		if (root != null) {
+			inOrder(root.leftChild);
+			System.out.print("(" + root.key +" , "+ root.balance + ") " );
+			inOrder(root.rightChild);
+		}
+	}
+	
+	/**
+	 * Walks the tree in (left-right-root) fashion
+	 * @param root
+	 */
+	public static void postOrder(Node root) {
+		if (root != null) {
+			postOrder(root.leftChild);
+			postOrder(root.rightChild);
+			System.out.print("(" + root.key +" , "+ root.balance + ") " );
+		}
 	}
 }
