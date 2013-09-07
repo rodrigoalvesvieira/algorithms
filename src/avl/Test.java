@@ -7,7 +7,7 @@ package avl;
 
 public class Test {
 	public static void main(String[] args) {
-		Node tree = null;
+		AVL tree = null;
 		
 		tree = AVL.insert(50, tree);
 		tree = AVL.insert(30, tree);
@@ -41,7 +41,7 @@ public class Test {
 		System.out.println();
 		
 		// Searching for a node in the tree which has the value 30 as key
-		Node a = AVL.search(tree, 30);
+		AVL a = AVL.search(tree, 30);
 		System.out.println("Node key=>" + a.key + ", balance=>" + a.balance);
 	}
 }

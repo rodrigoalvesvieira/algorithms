@@ -9,21 +9,19 @@
  */
 package avl;
 
-class Node {
+public class AVL {
 	int key;
 	int balance;
-	Node leftChild;
-	Node rightChild;
+	AVL leftChild;
+	AVL rightChild;
 	
-	public Node(int value){
+	public AVL(int value) {
 		this.key = value;
 		this.balance = 0;
 		this.leftChild = null;
 		this.rightChild = null;
 	}
-}
-
-public class AVL {	
+	
 	public static int abs(int x){
 		if (x < 0) {
 			return -x;
@@ -40,7 +38,7 @@ public class AVL {
 		}
 	}
 	
-	public static int getHeight(Node root){
+	public static int getHeight(AVL root){
 		if (root == null) {
 			return -1;
 		} else {
@@ -48,7 +46,7 @@ public class AVL {
 		}
 	}
 	
-	public static Node search(Node root, int value) {
+	public static AVL search(AVL root, int value) {
 		if (root == null) return null;
 		
 		if (root.key == value) {
@@ -62,10 +60,10 @@ public class AVL {
 		return null;
 	}
 	
-	public static Node simpleRightRotation(Node root){
-		Node A  = root;
-		Node B = root.leftChild;
-		Node C = B.rightChild;;
+	public static AVL simpleRightRotation(AVL root){
+		AVL A  = root;
+		AVL B = root.leftChild;
+		AVL C = B.rightChild;;
 		B.rightChild = A;
 		A.leftChild = C;
 		
@@ -82,12 +80,12 @@ public class AVL {
 		return root;
 	}
 	
-	public static Node doubleRightRotation(Node root){
-		Node A = root;
-		Node B = root.leftChild;
-		Node C = root.leftChild.rightChild;
-		Node D = root.leftChild.rightChild.leftChild;
-		Node E = root.leftChild.rightChild.rightChild;
+	public static AVL doubleRightRotation(AVL root){
+		AVL A = root;
+		AVL B = root.leftChild;
+		AVL C = root.leftChild.rightChild;
+		AVL D = root.leftChild.rightChild.leftChild;
+		AVL E = root.leftChild.rightChild.rightChild;
 		
 		A.leftChild = E;
 		B.rightChild = D;
@@ -112,10 +110,10 @@ public class AVL {
 		return root;
 	}
 	
-	public static Node simpleLeftRotation(Node tree){
-		Node A  = tree;
-		Node B = tree.rightChild;
-		Node C = B.leftChild;
+	public static AVL simpleLeftRotation(AVL tree){
+		AVL A  = tree;
+		AVL B = tree.rightChild;
+		AVL C = B.leftChild;
 		
 		B.leftChild = A;
 		A.rightChild = C;
@@ -134,12 +132,12 @@ public class AVL {
 		return tree;
 	}
 	
-	public static Node doubleLeftRotation(Node root){
-		Node A = root;
-		Node B = A.rightChild;
-		Node C = B.leftChild;
-		Node D = C.rightChild;
-		Node E = C.leftChild;
+	public static AVL doubleLeftRotation(AVL root){
+		AVL A = root;
+		AVL B = A.rightChild;
+		AVL C = B.leftChild;
+		AVL D = C.rightChild;
+		AVL E = C.leftChild;
 		
 		A.rightChild = E;
 		B.leftChild = D;
@@ -164,9 +162,9 @@ public class AVL {
 		return root;
 	}
 	
-	public static Node insert(int value, Node root) {
+	public static AVL insert(int value, AVL root) {
 		if (root == null) {
-			root = new Node(value);
+			root = new AVL(value);
 		} else {
 			if (value < root.key) {
 				root.leftChild = insert(value, root.leftChild);
@@ -208,7 +206,7 @@ public class AVL {
 		return root;
 	}
 	
-	public static Node remove(Node root, int value) {
+	public static AVL remove(AVL root, int value) {
 		if (root == null) {
 			System.out.println("No element found!");
 		} else {
@@ -225,8 +223,8 @@ public class AVL {
 						root.rightChild.leftChild = root.leftChild;
 						root = root.rightChild;
 					} else {
-						Node previous = root;
-						Node next = root.rightChild;
+						AVL previous = root;
+						AVL next = root.rightChild;
 						
 						while (next.leftChild != null) {
 							previous = next;
@@ -249,7 +247,7 @@ public class AVL {
 		return root;
 	}
 	
-	public static Node recalcularBalance(Node root){
+	public static AVL recalcularBalance(AVL root){
 		if (root != null) {
 			root.leftChild = recalcularBalance(root.leftChild);
 			root.rightChild = recalcularBalance(root.rightChild);
@@ -281,7 +279,7 @@ public class AVL {
 	 * Walks the tree in the (root-left-right) fashion
 	 * @param root
 	 */
-	public static void preOrder(Node root) {
+	public static void preOrder(AVL root) {
 		if (root != null) {
 			System.out.print("(" + root.key +" , "+ root.balance + ") " );
 			preOrder(root.leftChild);
@@ -293,7 +291,7 @@ public class AVL {
 	 * Walks the tree in the (left-root-right) fashion
 	 * @param root
 	 */
-	public static void inOrder(Node root) {
+	public static void inOrder(AVL root) {
 		if (root != null) {
 			inOrder(root.leftChild);
 			System.out.print("(" + root.key +" , "+ root.balance + ") " );
@@ -305,7 +303,7 @@ public class AVL {
 	 * Walks the tree in (left-right-root) fashion
 	 * @param root
 	 */
-	public static void postOrder(Node root) {
+	public static void postOrder(AVL root) {
 		if (root != null) {
 			postOrder(root.leftChild);
 			postOrder(root.rightChild);
