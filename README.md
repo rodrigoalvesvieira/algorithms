@@ -1,16 +1,39 @@
-## Data Structures
+## Algorithms & Data Structures
 
-Implementations of abstract data types in Java for the Algorithms and Data Structures (IF672) discipline at CIn/UFPE
+Implementations of data structures, sorting and search algorithms in Java for the
+Algorithms and Data Structures (IF672) discipline at CIn/UFPE
 
-## Abstract Data Types
+| Data Structure         | Status        |
+| ---------------------- |:-------------:|
+| Singly Linked List     | Finished      |
+| Doubly Linked List     | Pending       |
+| Queue                  | Finished      |
+| Stack                  | Pending       |
+| Min Heap (binary)      | Pending       |
+| Max Heap (binary)      | Pending       |
+| Binary Search Tree     | Finished      |
+| AVL Tree               | Finished      |
+| Disjoint Set           | Pending       |
+| Hash Table             | Pending       |
+| Bloom Filter           | Pending       |
 
-* List
-* Stack
-* Queue
-* Binary Search Tree
-* AVL Tree
-* Min Heap (binary)
-* Max Heap (binary)
+## Sorting
+
+| Algorithm              | Status        |
+| ---------------------- |:-------------:|
+| Insertion sort         | Pending       |
+| Bubble sort            | Pending       |
+| Selection sort         | Pending       |
+| Shellsort              | Pending       |
+| Quicksort              | Pending       |
+| Mergesort              | Pending       |
+| Convex Hull            | Pending       |
+
+## Searching
+
+| Algorithm              | Status        |
+| ---------------------- |:-------------:|
+| Binary Search          | Pending       |
 
 ## Algorithms
 
@@ -21,6 +44,7 @@ Implementations of abstract data types in Java for the Algorithms and Data Struc
 * Big-O cheat sheet http://bigocheatsheet.com/
 * Computer Science animated http://www.csanimated.com
 * AlgoList http://www.algolist.net/
+* GeeksForGeeks http://www.geeksforgeeks.org/
 
 ## Visualizations
 
