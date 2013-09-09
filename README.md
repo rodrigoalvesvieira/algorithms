@@ -7,6 +7,7 @@ Algorithms and Data Structures (IF672) discipline at CIn/UFPE
 | ---------------------- |:-------------:|
 | Singly Linked List     | Finished      |
 | Doubly Linked List     | Pending       |
+| Dynamic Array          | Pending       |
 | Queue                  | Finished      |
 | Stack                  | Pending       |
 | Min Heap (binary)      | Pending       |
