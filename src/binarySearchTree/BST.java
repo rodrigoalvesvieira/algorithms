@@ -100,30 +100,6 @@ class BST {
 		}
 	}
 
-	public BST getLeft() {
-		return left;
-	}
-
-	public void setLeft(BST left) {
-		this.left = left;
-	}
-
-	public BST getRight() {
-		return right;
-	}
-
-	public void setRight(BST right) {
-		this.right = right;
-	}
-
-	public int getValue() {
-		return this.value;
-	}
-
-	public void setValue(int value) {
-		this.value = value;
-	}
-	
 	public static void preOrder(BST root) {
 		if (root != null) {
 			System.out.print(root.value + " ");
