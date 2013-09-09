@@ -13,5 +13,8 @@ public class Test {
     	h.insert(2);
     	
     	h.print();
+    	
+    	System.out.println(h.extract());
+//    	h.print();
 	}
 }

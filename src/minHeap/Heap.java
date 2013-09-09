@@ -53,9 +53,9 @@ class Heap {
         if (size < 1) return (Integer) null;
 
         int min = heap[0];
-        heap[0] = heap[size - 1];
-        heap[size] = (Integer) null;
-        size--;
+        this.heap[0] = this.heap[size - 1];
+        this.heap[size] = (Integer) null;
+        this.size--;
         siftDown(0);
         return min;
     }
@@ -102,18 +102,18 @@ class Heap {
     }
 
     void insert(int key) {
-        size++;
-        heap[size - 1] = key;
-        siftUp(size - 1);
+        this.size++;
+        this.heap[size - 1] = key;
+        siftUp(this.size - 1);
     }
 
     boolean empty() {
-        return (size == 0);
+        return (this.size == 0);
     }
 
     void print() {
-        for (int i = 0; i < size; i++) {
-            System.out.print(heap[i] + " ");
+        for (int i = 0; i < this.size; i++) {
+            System.out.print(this.heap[i] + " ");
         }
         
         System.out.println();

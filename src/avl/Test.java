@@ -7,6 +7,8 @@ package avl;
 
 public class Test {
 	public static void main(String[] args) {
+		System.out.println("Testing AVL tree\n");
+		
 		AVL tree = null;
 		
 		tree = AVL.insert(50, tree);

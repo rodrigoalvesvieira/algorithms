@@ -8,7 +8,12 @@ public class Test {
 		list.push(50);
 		
 		list.pushStart(23);
+		list.print();
+
+		list.removeEnd();
+		list.print();
 		
+		list.removeBegin();
 		list.print();
 	}
 }

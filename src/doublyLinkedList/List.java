@@ -52,7 +52,6 @@ class List {
     		novoNo.next = this.begin;
     		this.begin = novoNo;
     	}
-    	
     	this.size++;
     }
    
@@ -101,5 +100,6 @@ class List {
 			System.out.print(helper.value + " ");
 			helper = helper.next;
 		}
+		System.out.println();
 	}
 }

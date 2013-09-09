@@ -5,12 +5,18 @@
 package maxHeap;
 
 class Heap {
-    int[] heap;
+    int[] collection;
     int size;
+    int currentIndex = 0;
 
     public Heap() {
-        size = 0;
-        heap = new int[1000];
+        this.size = 0;
+        this.collection = new int[1000];
+    }
+    
+    public Heap(int col) {
+    	this.size = 0;
+    	this.collection = new int[col];
     }
 
     int parent(int i) {
@@ -34,17 +40,17 @@ class Heap {
         int r = right(i);
         int smallest;
         
-        if (l < size && (heap[l] < heap[i])) {
+        if (l < size && (collection[l] < collection[i])) {
             smallest = l;
         } else {
             smallest = i;
         }
-        if (r < size && heap[r] < heap[smallest]) smallest = r;
+        if (r < size && collection[r] < collection[smallest]) smallest = r;
 
         if (smallest != i) {
-            int temp = heap[i];
-            heap[i] = heap[smallest];
-            heap[smallest] = temp;
+            int temp = collection[i];
+            collection[i] = collection[smallest];
+            collection[smallest] = temp;
             siftDown(smallest);
         }
     }
@@ -52,9 +58,9 @@ class Heap {
     int extract() {
         if (size < 1) return (Integer) null;
 
-        int min = heap[0];
-        heap[0] = heap[size - 1];
-        heap[size] = (Integer) null;
+        int min = collection[0];
+        collection[0] = collection[size - 1];
+        collection[size] = (Integer) null;
         size--;
         siftDown(0);
         return min;
@@ -62,7 +68,7 @@ class Heap {
 
     void remove(int v) {
         for (int i = 0; i < size; ++i) {
-            if (heap[i] == v) {
+            if (collection[i] == v) {
                 removeAt(i);
                 break;
             }
@@ -77,10 +83,10 @@ class Heap {
             --size;
             return;
         }
-        heap[where] = heap[size-1];
+        collection[where] = collection[size-1];
         --size;
 
-        if (where > 0 && Double.compare(heap[where], (heap[(where-1)/2])) > 0) {
+        if (where > 0 && Double.compare(collection[where], (collection[(where-1)/2])) > 0) {
             siftUp(where);
         } else if (where < size/2) {
             siftDown(where);
@@ -92,10 +98,10 @@ class Heap {
         int temp;
         if (i != 0) {
             par = parent(i);
-            if (heap[par] > heap[i] || heap[i] == 'F') {
-                temp = heap[par];
-                heap[par] = heap[i];
-                heap[i] = temp;
+            if (collection[par] > collection[i] || collection[i] == 'F') {
+                temp = collection[par];
+                collection[par] = collection[i];
+                collection[i] = temp;
                 siftUp(par);
             }
         }
@@ -103,7 +109,7 @@ class Heap {
 
     void insert(int key) {
         size++;
-        heap[size - 1] = key;
+        collection[size - 1] = key;
         siftUp(size - 1);
     }
 
@@ -113,7 +119,7 @@ class Heap {
 
     void print() {
         for (int i = 0; i < size; i++) {
-            System.out.print(heap[i] + " ");
+            System.out.print(collection[i] + " ");
         }
         
         System.out.println();
