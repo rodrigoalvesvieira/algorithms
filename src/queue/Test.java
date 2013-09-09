@@ -21,5 +21,10 @@ public class Test {
 		
 		queue.dequeue();
 		queue.print();
+		
+		// Get top
+		System.out.println(queue.getTop());
+		// Get last element
+		System.out.println(queue.getLastElement());
 	}
 }
