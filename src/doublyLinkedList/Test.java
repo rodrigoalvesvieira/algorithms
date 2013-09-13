@@ -2,6 +2,8 @@ package doublyLinkedList;
 
 public class Test {
 	public static void main(String[] args) {
+		System.out.println("Testing Doubly Linked List\n");
+
 		List list = new List();
 		
 		list.push(10);

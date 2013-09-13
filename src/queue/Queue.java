@@ -14,7 +14,7 @@ class Node {
     }
 }
 
-class Queue {
+public class Queue {
     Node top;
 
     public void enqueue(int v) {

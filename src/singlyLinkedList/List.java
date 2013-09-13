@@ -14,7 +14,7 @@ class Node {
 	}
 }
 
-class List {
+public class List {
 	public Node first;
 	private int size;
 	
