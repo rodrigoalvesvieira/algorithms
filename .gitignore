@@ -2,6 +2,7 @@
 target
 bin
 
+output.txt
 *.class
 *~
 .project
