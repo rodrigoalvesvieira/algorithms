@@ -1,71 +1,106 @@
-// Queue (FIFO) implementation
-// Rodrigo Alves @ CIn/UFPE
-// http://en.wikipedia.org/wiki/Queue_(data_structure)
-
 package queue;
 
 class Node {
     int value;
+    Node previous;
     Node next;
 
     public Node(int v) {
         this.value = v;
-        this.next = null;
+        this.previous = this.next = null;
+    }
+    
+    public Node(int v, Node prev, Node nxt) {
+    	this.value = v;
+    	this.previous = prev;
+    	this.next = nxt;
     }
 }
 
+/**
+ * Queue (FIFO) implementation
+ * Rodrigo Alves @ CIn/UFPE
+ * http://en.wikipedia.org/wiki/Queue_(abstract_data_type)
+ * http://en.wikipedia.org/wiki/File:Data_Queue.svg
+ */
 public class Queue {
-    Node top;
+    Node back;
+    Node front;
 
     public void enqueue(int v) {
         Node newNode = new Node(v);
 
-        if (this.top == null) {
-        	this.top = newNode;
+        if (this.back == null) {
+        	this.back = this.front = newNode;
         } else {
-        	Node helper = this.top;
-        	while (helper.next != null) {
-		    	if (helper.next != null) helper = helper.next;
-		    }
-        	helper.next = newNode;		    
+        	newNode.next = this.back;
+        	this.back.previous = newNode;
+        	this.back = newNode;
 		}
 	}
 
     public int dequeue() {
-    	if (top == null) {
+    	if (this.front == null) {
     		return -1;
         } else {
-            int res = this.top.value;
-            this.top = this.top.next;
+            int res = this.front.value;
+            this.front.previous = this.front;
+            this.front = this.front.previous;
+            
             return res;
         }
     }
 
     public boolean isEmpty() {
-        return this.top == null;
+        return this.back == null;
     }
 
-	public int getTop() {
-		if (top != null) return top.value;
+	public int getBack() {
+		if (this.back != null) return this.back.value;
 		return -1;
 	}
-
-	public int getLastElement() {
-		while (top.next != null) {
-			top = top.next;
+	
+	public int getFront() {
+		if (this.front != null) return this.front.value;
+		return -1;
+	}
+	
+	public Node search(int v) {
+		boolean go = true;
+		Node helper = this.back;
+		
+		while (go) {
+			if (helper.value == v) {
+				go = false;
+			} else {
+				if (helper.next != null) helper = helper.next;
+			}
 		}
 		
-		return this.top.value;
+		return helper;
 	}
 	
 	public void print() {
-		print(this.top);
+		print(this.back);
 	}
 	
 	public void print(Node node) {
 		if (node != null) {
 			System.out.print(node.value + " ");
 			print(node.next);
+		} else {
+			System.out.println();
+		}
+	}
+	
+	public void printReverse() {
+		print(this.front);
+	}
+	
+	public void printReverse(Node node) {
+		if (node != null) {
+			System.out.print(node.value + " ");
+			print(node.previous);
 		} else {
 			System.out.println();
 		}
