@@ -6,7 +6,7 @@ Algorithms and Data Structures (IF672) discipline at CIn/UFPE
 | Data Structure         | Status        |
 | ---------------------- |:-------------:|
 | Singly Linked List     | Finished      |
-| Doubly Linked List     | Pending       |
+| Doubly Linked List     | Finished      |
 | Dynamic Array          | Finished      |
 | Queue                  | Finished      |
 | Stack                  | Pending       |

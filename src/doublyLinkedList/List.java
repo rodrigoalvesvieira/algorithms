@@ -19,7 +19,7 @@ class Node {
 class List {
     private Node begin;
     private Node end;
-    private int size;
+    int size;
    
     public List() {        
     	this.begin = null;
@@ -43,14 +43,14 @@ class List {
     }
    
     public void pushStart(int v){
-    	Node novoNo = new Node(v);
+    	Node node = new Node(v);
     	if (this.isEmpty()) {                    
-    		this.begin = novoNo;
-    		this.end = novoNo;
+    		this.begin = node;
+    		this.end = node;
     	} else {
-    		this.begin.prev = novoNo;
-    		novoNo.next = this.begin;
-    		this.begin = novoNo;
+    		this.begin.prev = node;
+    		node.next = this.begin;
+    		this.begin = node;
     	}
     	this.size++;
     }
@@ -64,25 +64,15 @@ class List {
     }
    
     public void removeEnd(){
-    	Node helper;
-    	helper = this.end.prev;
-    	this.end = helper;
-    	this.pushStart(this.getEndValue());
-    	helper = this.end.prev;
-    	this.end = null;
-    	this.end = helper;
-    	this.size = this.size - 2;         
+    	this.end.prev.next = null;
+    	this.end = this.end.prev;
+    	this.size--;
     }
    
     public void removeBegin(){
-    	Node aux;
-    	aux = this.begin.next;
-    	this.begin = aux;
-    	this.push(this.getBeginValue());
-    	aux = this.begin.next;
-    	this.begin = null;
-    	this.begin = aux;
-    	this.size = this.size - 2;
+    	this.begin.next.prev = null;
+    	this.begin = this.begin.next;
+    	this.size--;
     }
    
     public int getSize() {
