@@ -44,7 +44,7 @@ public class Queue {
     		return -1;
         } else {
             int res = this.front.value;
-            this.front.previous = this.front;
+            this.front.previous.next = null;
             this.front = this.front.previous;
             
             return res;
