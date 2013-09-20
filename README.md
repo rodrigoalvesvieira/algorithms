@@ -9,7 +9,7 @@ Algorithms and Data Structures (IF672) discipline at CIn/UFPE
 | Doubly Linked List     | Finished      |
 | Dynamic Array          | Finished      |
 | Queue                  | Finished      |
-| Stack                  | Pending       |
+| Stack                  | Finished      |
 | Min Heap (binary)      | Pending       |
 | Max Heap (binary)      | Pending       |
 | Binary Search Tree     | Finished      |

@@ -5,37 +5,42 @@
 package stack;
 
 class Node {
-	Node prev;
+	Node previous;
 	Node next;
 	int value;
 
 	public Node(int value) {
-		this.prev = this.next = null;
+		this.previous = this.next = null;
 		this.value = value;
+	}
+	
+	public Node(int value, Node next) {
+		this.value = value;
+		this.next = next;
 	}
 }
 
 class Stack {
-	public Node begin;
 	public Node top;
-	private int size;
+	public Node begin;
+	int size;
 	
 	public Stack() {
-		this.begin = this.top = null;
+		this.top = this.begin = null;
 		this.size = 0;
 	}
 	
-	public void push(int n) {
-		Node newNode = new Node(n);
+	public void push(int v) {
+		Node newNode = new Node(v);
 		
 		if (this.isEmpty()) {
-			this.begin = this.top = newNode;
+			this.top = this.begin = newNode;
 		} else {
-			Node helper = this.top;
-			this.top.prev = helper;
 			this.top.next = newNode;
+			newNode.previous = this.top;
 			this.top = newNode;
 		}
+		
 		this.size++;
 	}
 	
@@ -43,11 +48,8 @@ class Stack {
 		if (!this.isEmpty()) {
 			int res = this.top.value;
 			
-			System.out.println("valor do top: " + this.top.value);
-			
-			this.top = this.top.prev;
-
-			System.out.println("valor do anterior ao top: " + this.top.prev.value);
+			this.top = this.top.previous;
+			this.top.next = null;
 			
 			this.size--;
 			return res;	
@@ -56,12 +58,8 @@ class Stack {
 		return -1;
 	}
 
-	public int getSize() {
-		return this.size;
-	}
-
 	public boolean isEmpty() {
-		return this.begin == null;
+		return this.top == null;
 	}
 	
 	public void print() {
@@ -74,6 +72,16 @@ class Stack {
 			print(node.next);
 		} else {
 			System.out.println();
+		}
+	}
+	
+	public Node search(Node n, int key) {
+		if (n == null) return null;
+		
+		if (n.value == key) {
+			return n;
+		} else {
+			return search(n.next, key);
 		}
 	}
 }
