@@ -1,40 +1,40 @@
 ## Algorithms & Data Structures
 
-Implementations of data structures, sorting and search algorithms in Java for the
+Implementations of data structures, sorting and search algorithms in vanilla Java for the
 Algorithms and Data Structures (IF672) discipline at CIn/UFPE
 
-| Data Structure         | Status        |
-| ---------------------- |:-------------:|
-| Singly Linked List     | Finished      |
-| Doubly Linked List     | Finished      |
-| Dynamic Array          | Finished      |
-| Queue                  | Finished      |
-| Stack                  | Finished      |
-| Min Heap (binary)      | Pending       |
-| Max Heap (binary)      | Pending       |
-| Binary Search Tree     | Finished      |
-| AVL Tree               | Finished      |
-| Disjoint Set           | Pending       |
-| Hash Table             | Pending       |
-| Bloom Filter           | Pending       |
+| Data Structure                 | Status        |
+| ------------------------------ |:-------------:|
+| Singly Linked List             | Finished      |
+| Doubly Linked List             | Finished      |
+| Dynamic Array                  | Finished      |
+| Queue                          | Finished      |
+| Stack                          | Finished      |
+| Min Heap (binary)              | Pending       |
+| Max Heap (binary)              | Pending       |
+| Binary Search Tree             | Finished      |
+| AVL Tree                       | Finished      |
+| Disjoint Set                   | Pending       |
+| Hash Table                     | Pending       |
+| Bloom Filter                   | Pending       |
 
 ## Sorting
 
-| Algorithm              | Status        |
-| ---------------------- |:-------------:|
-| Insertion sort         | Pending       |
-| Bubble sort            | Pending       |
-| Selection sort         | Pending       |
-| Shellsort              | Pending       |
-| Quicksort              | Pending       |
-| Mergesort              | Pending       |
-| Convex Hull            | Pending       |
+| Algorithm                      | Status        |
+| ------------------------------ |:-------------:|
+| Insertion sort                 | Pending       |
+| Bubble sort                    | Pending       |
+| Selection sort                 | Pending       |
+| Shellsort                      | Pending       |
+| Quicksort                      | Finished      |
+| Mergesort                      | Pending       |
+| Convex Hull                    | Pending       |
 
 ## Searching
 
-| Algorithm              | Status        |
-| ---------------------- |:-------------:|
-| Binary Search          | Pending       |
+| Algorithm                      | Status        |
+| ------------------------------ |:-------------:|
+| Binary Search                  | Finished      |
 
 ## Algorithms
 

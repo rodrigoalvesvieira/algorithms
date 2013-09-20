@@ -1,44 +1,20 @@
 package sorting;
 
-/*************************************************************************
- *  Compilation:  javac Quick.java
- *  Execution:    java Quick < input.txt
- *  Dependencies: StdOut.java StdIn.java
- *  Data files:   http://algs4.cs.princeton.edu/23quicksort/tiny.txt
- *                http://algs4.cs.princeton.edu/23quicksort/words3.txt
- *
- *  Sorts a sequence of strings from standard input using quicksort.
- *  BUGGY
- *   
- *  % more tiny.txt
- *  S O R T E X A M P L E
- *
- *  % java Quick < tiny.txt
- *  A E E L M O P R S T X                 [ one string per line ]
- *
- *  % more words3.txt
- *  bed bug dad yes zoo ... all bad yet
- *       
- *  % java Quick < words3.txt
- *  all bad bed bug dad ... yes yet zoo    [ one string per line ]
- *
- *
- *  Remark: For a type-safe version that uses static generics, see
- *
- *    http://algs4.cs.princeton.edu/23quicksort/QuickPedantic.java
- *
- *************************************************************************/
-
+/**
+ * Quicksort Algorithm
+ * http://en.wikipedia.org/wiki/Quicksort
+ * 
+ * Based on implementation by Robert Sedgewick @ Princeton University
+ */
 public class Quick {
 
     // quicksort the array
-    public static void sort(Comparable[] a) {
-//        StdRandom.shuffle(a);
+    public static void sort(int[] a) {
         sort(a, 0, a.length - 1);
     }
 
     // quicksort the subarray from a[lo] to a[hi]
-    private static void sort(Comparable[] a, int lo, int hi) { 
+    private static void sort(int[] a, int lo, int hi) { 
         if (hi <= lo) return;
         int j = partition(a, lo, hi);
         sort(a, lo, j-1);
@@ -48,10 +24,10 @@ public class Quick {
 
     // partition the subarray a[lo .. hi] by returning an index j
     // so that a[lo .. j-1] <= a[j] <= a[j+1 .. hi]
-    private static int partition(Comparable[] a, int lo, int hi) {
+    private static int partition(int[] a, int lo, int hi) {
         int i = lo;
         int j = hi + 1;
-        Comparable v = a[lo];
+        int v = a[lo];
         while (true) { 
 
             // find item on lo to swap
@@ -80,7 +56,7 @@ public class Quick {
     *  and a[0] through a[k-1] are less than or equal to a[k], and
     *  a[k+1] through a[n-1] are greater than or equal to a[k].
     ***********************************************************************/
-    public static Comparable select(Comparable[] a, int k) {
+    public static int select(int[] a, int k) {
         if (k < 0 || k >= a.length) {
             throw new IndexOutOfBoundsException("Selected element out of bounds");
         }
@@ -102,13 +78,13 @@ public class Quick {
     ***********************************************************************/
     
     // is v < w ?
-    private static boolean less(Comparable v, Comparable w) {
-        return (v.compareTo(w) < 0);
+    private static boolean less(int v, int w) {
+        return (v < w);
     }
         
     // exchange a[i] and a[j]
-    private static void exch(Object[] a, int i, int j) {
-        Object swap = a[i];
+    private static void exch(int[] a, int i, int j) {
+        int swap = a[i];
         a[i] = a[j];
         a[j] = swap;
     }
@@ -117,19 +93,18 @@ public class Quick {
    /***********************************************************************
     *  Check if array is sorted - useful for debugging
     ***********************************************************************/
-    private static boolean isSorted(Comparable[] a) {
+    private static boolean isSorted(int[] a) {
         return isSorted(a, 0, a.length - 1);
     }
 
-    private static boolean isSorted(Comparable[] a, int lo, int hi) {
+    private static boolean isSorted(int[] a, int lo, int hi) {
         for (int i = lo + 1; i <= hi; i++)
             if (less(a[i], a[i-1])) return false;
         return true;
     }
 
-
     // print array to standard output
-    private static void show(Comparable[] a) {
+    private static void show(int[] a) {
         for (int i = 0; i < a.length; i++) {
             System.out.println(a[i]);
         }
@@ -137,16 +112,9 @@ public class Quick {
 
     // Read strings from standard input, sort them, and print.
     public static void main(String[] args) {
-        String[] a = {"rodrigo", "alves", "vieira"};
+    	int[] a = {88, 1, 40, 23};
+    	
         Quick.sort(a);
         show(a);
-
-        // display results again using select
-//        StdOut.println();
-        for (int i = 0; i < a.length; i++) {
-            String ith = (String) Quick.select(a, i);
-//            StdOut.println(ith);
-        }
     }
-
 }
