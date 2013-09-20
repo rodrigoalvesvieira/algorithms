@@ -13,11 +13,6 @@ class Node {
 		this.previous = this.next = null;
 		this.value = value;
 	}
-	
-	public Node(int value, Node next) {
-		this.value = value;
-		this.next = next;
-	}
 }
 
 class Stack {
@@ -26,7 +21,7 @@ class Stack {
 	int size;
 	
 	public Stack() {
-		this.top = this.begin = null;
+		this.begin = this.top = null;
 		this.size = 0;
 	}
 	
@@ -34,7 +29,7 @@ class Stack {
 		Node newNode = new Node(v);
 		
 		if (this.isEmpty()) {
-			this.top = this.begin = newNode;
+			this.begin = this.top = newNode;
 		} else {
 			this.top.next = newNode;
 			newNode.previous = this.top;
