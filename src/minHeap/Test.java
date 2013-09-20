@@ -1,20 +1,26 @@
-// http://www.cosc.canterbury.ac.nz/mukundan/dsal/MinHeapAppl.html
-
 package minHeap;
 
+/**
+ * http://people.ksp.sk/~kuko/bak/index.html
+ * @author Rodrigo Alves
+ *
+ */
 public class Test {
 	public static void main(String[] args) {
-    	Heap h = new Heap();
-    	h.insert(10);
-    	h.insert(40);
-    	h.insert(4);
-    	h.insert(32);
-    	h.insert(1);
-    	h.insert(2);
+		System.out.println("Testing binary Min Heap tree\n");
+
+    	Heap heap = new Heap(1000);
+    	int numbers[] = {10, 40, 4, 32, 1, 2, 21, 666, 7, 33};
     	
-    	h.print();
+    	for (int i = 0; i < numbers.length; i++) heap.insert(numbers[i]);
+    	heap.print();
+    	System.out.println("Heap size is now " + heap.size + "\n");
     	
-    	System.out.println(h.extract());
-//    	h.print();
+    	System.out.println("first element is " + heap.elements[1] + "\n");
+    	
+    	System.out.println("Extract min returns " +  heap.extractMin());
+    	heap.print();
+    	
+    	System.out.println("Heap size is now " + heap.size + "\n");
 	}
 }

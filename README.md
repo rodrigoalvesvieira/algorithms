@@ -13,7 +13,7 @@ Algorithms and Data Structures (IF672) discipline at CIn/UFPE
 | Min Heap (binary)                                             | Pending       |
 | Max Heap (binary)                                             | Pending       |
 | Binary Search Tree                                            | Finished      |
-| (Adelson-Velskii and Landis' (AVL) Tree                       | Finished      |
+| Adelson-Velskii and Landis' (AVL) Tree                        | Finished      |
 | Disjoint Set                                                  | Pending       |
 | Hash Table                                                    | Pending       |
 | Bloom Filter                                                  | Pending       |

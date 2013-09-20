@@ -1,24 +1,25 @@
-// Min Heap (binary) implementation
-// Rodrigo Alves @ CIn/UFPE
-// http://en.wikipedia.org/wiki/Binary_heap
-
 package minHeap;
 
+/**
+ * Min Heap (binary) implementation
+ * A type of Priority Queue
+ * 
+ * @author Rodrigo Alves @ CIn/UFPE
+ * http://en.wikipedia.org/wiki/Binary_heap
+ * 
+ */
 class Heap {
-    int[] heap;
+    int[] elements;
     int size;
 
-    public Heap() {
+    public Heap(int hSize) {
         this.size = 0;
-        this.heap = new int[1000];
+        this.elements = new int[hSize];
     }
-
-    int parent(int i) {
-        if (i % 2 == 0) {
-            return (i - 2) / 2;
-        } else {
-            return (i - 1) / 2;
-        }
+    
+    public int[] children(int i) {
+    	int ch[] = {i*2, i*2 + 1};
+    	return ch;
     }
 
     int left(int i) {
@@ -28,83 +29,63 @@ class Heap {
     int right(int i) {
         return 2 * i + 2;
     }
+    
+    int parent(int i) {
+        return i / 2;
+    }
 
     void siftDown(int i) {
         int l = left(i);
         int r = right(i);
         int smallest;
-        if (l < size && (heap[l] < heap[i])) {
+        if (l < size && (elements[l] < elements[i])) {
             smallest = l;
         } else {
             smallest = i;
         }
         
-        if (r < size && heap[r] < heap[smallest]) smallest = r;
+        if (r < size && elements[r] < elements[smallest]) smallest = r;
 
         if (smallest != i) {
-            int temp = heap[i];
-            heap[i] = heap[smallest];
-            heap[smallest] = temp;
+            int temp = elements[i];
+            elements[i] = elements[smallest];
+            elements[smallest] = temp;
             siftDown(smallest);
         }
     }
 
-    int extract() {
+    int extractMin() {
         if (size < 1) return (Integer) null;
-
-        int min = heap[0];
-        this.heap[0] = this.heap[size - 1];
-        this.heap[size] = (Integer) null;
-        this.size--;
-        siftDown(0);
+        
+        this.exchange(1, this.size);
+        int min = this.elements[this.size--];
+        siftDown(1);
         return min;
     }
 
-    void remove(int v) {
-        for (int i = 0; i < size; ++i) {
-            if (heap[i] == v) {
-                removeAt(i);
-                break;
-            }
-        }
-    }
-
-    void removeAt(int where) {
-        if (size == 0) return;
-        if (where >= size) return;
-
-        if (where == size-1) {
-            --size;
-            return;
-        }
-        heap[where] = heap[size-1];
-        --size;
-
-        if (where > 0 && Double.compare(heap[where], (heap[(where-1)/2])) > 0) {
-            siftUp(where);
-        } else if (where < size/2) {
-            siftDown(where);
-        }
-    }
-
     void siftUp(int i) {
-        int par;
-        int temp;
+        int parent, temp;
         if (i != 0) {
-            par = parent(i);
-            if (heap[par] > heap[i] || heap[i] == 'F') {
-                temp = heap[par];
-                heap[par] = heap[i];
-                heap[i] = temp;
-                siftUp(par);
+            parent = parent(i);
+            if (elements[parent] > elements[i] || elements[i] == 'F') {
+                temp = elements[parent];
+                elements[parent] = elements[i];
+                elements[i] = temp;
+                siftUp(parent);
             }
         }
     }
-
+    
+    private void exchange(int j, int k) {
+    	int swap = this.elements[j];
+    	this.elements[j] = this.elements[k];
+    	this.elements[k] = swap;
+    }
+    
     void insert(int key) {
         this.size++;
-        this.heap[size - 1] = key;
-        siftUp(this.size - 1);
+        this.elements[size] = key;
+        siftUp(this.size);
     }
 
     boolean empty() {
@@ -112,10 +93,7 @@ class Heap {
     }
 
     void print() {
-        for (int i = 0; i < this.size; i++) {
-            System.out.print(this.heap[i] + " ");
-        }
-        
+        for (int i = 1; i < this.size; i++) System.out.print(this.elements[i] + " ");
         System.out.println();
     }
 };
