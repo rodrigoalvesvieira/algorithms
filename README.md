@@ -3,38 +3,38 @@
 Implementations of data structures, sorting and search algorithms in vanilla Java for the
 Algorithms and Data Structures (IF672) discipline at CIn/UFPE
 
-| Data Structure                                                | Status        |
-| ------------------------------------------------------------- |:-------------:|
-| Singly Linked List                                            | Finished      |
-| Doubly Linked List                                            | Finished      |
-| Dynamic Array                                                 | Finished      |
-| Queue                                                         | Finished      |
-| Stack                                                         | Finished      |
-| Min Heap (binary)                                             | Finished      |
-| Max Heap (binary)                                             | Pending       |
-| Binary Search Tree                                            | Finished      |
-| Adelson-Velskii and Landis' (AVL) Tree                        | Finished      |
-| Disjoint Set                                                  | Pending       |
-| Hash Table                                                    | Pending       |
-| Bloom Filter                                                  | Pending       |
+| Data Structure                                                | Status           |
+| ------------------------------------------------------------- |:----------------:|
+| Singly Linked List                                            | Implemented      |
+| Doubly Linked List                                            | Implemented      |
+| Dynamic Array                                                 | Implemented      |
+| Queue                                                         | Implemented      |
+| Stack                                                         | Implemented      |
+| Min Heap (binary)                                             | Implemented      |
+| Max Heap (binary)                                             | Pending          |
+| Binary Search Tree                                            | Implemented      |
+| Adelson-Velskii and Landis' (AVL) Tree                        | Implemented      |
+| Disjoint Set                                                  | Pending          |
+| Hash Table                                                    | Pending          |
+| Bloom Filter                                                  | Pending          |
 
 ## Sorting
 
-| Algorithm                      | Status        |
-| ------------------------------ |:-------------:|
-| Insertion sort                 | Pending       |
-| Bubble sort                    | Pending       |
-| Selection sort                 | Pending       |
-| Shellsort                      | Pending       |
-| Quicksort                      | Finished      |
-| Mergesort                      | Pending       |
-| Convex Hull                    | Pending       |
+| Algorithm                      | Status           |
+| ------------------------------ |:----------------:|
+| Insertion sort                 | Pending          |
+| Bubble sort                    | Pending          |
+| Selection sort                 | Pending          |
+| Shellsort                      | Pending          |
+| Quicksort                      | Implemented      |
+| Mergesort                      | Pending          |
+| Convex Hull                    | Pending          |
 
 ## Searching
 
-| Algorithm                      | Status        |
-| ------------------------------ |:-------------:|
-| Binary Search                  | Finished      |
+| Algorithm                      | Status           |
+| ------------------------------ |:----------------:|
+| Binary Search                  | Implemented      |
 
 ## Algorithms
 
