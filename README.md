@@ -10,7 +10,7 @@ Algorithms and Data Structures (IF672) discipline at CIn/UFPE
 | Dynamic Array                                                 | Finished      |
 | Queue                                                         | Finished      |
 | Stack                                                         | Finished      |
-| Min Heap (binary)                                             | Pending       |
+| Min Heap (binary)                                             | Finished      |
 | Max Heap (binary)                                             | Pending       |
 | Binary Search Tree                                            | Finished      |
 | Adelson-Velskii and Landis' (AVL) Tree                        | Finished      |
