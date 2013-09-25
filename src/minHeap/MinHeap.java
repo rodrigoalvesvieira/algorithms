@@ -33,7 +33,7 @@ public class MinHeap {
         size = keys.length;
         elements = (int[]) new int[keys.length + 1];
         for (int i = 0; i < size; i++)
-            elements[i+1] = keys[i];
+            this.elements[i+1] = keys[i];
         for (int k = size/2; k >= 1; k--)
             sink(k);
         assert isMinHeap();
@@ -43,19 +43,15 @@ public class MinHeap {
         return this.size == 0;
     }
 
-    public int size() {
-        return size;
-    }
-
     public int min() {
-        return elements[1];
+        return this.elements[1];
     }
 
     private void resize(int capacity) {
         assert capacity > size;
         int[] temp = new int[capacity];
-        for (int i = 1; i <= size; i++) temp[i] = elements[i];
-        elements = temp;
+        for (int i = 1; i <= size; i++) temp[i] = this.elements[i];
+        this.elements = temp;
     }
 
     public void insert(int x) {
@@ -63,7 +59,7 @@ public class MinHeap {
         if (size == elements.length - 1) resize(2 * elements.length);
 
         // add x, and percolate it up to maintain heap invariant
-        elements[++size] = x;
+        this.elements[++size] = x;
         swim(size);
         assert isMinHeap();
     }
@@ -74,7 +70,7 @@ public class MinHeap {
      */
     public int extractMin() {
         exchange(1, size);
-        int min = elements[size--];
+        int min = this.elements[size--];
         sink(1);
         if ((size > 0) && (size == (elements.length - 1) / 4)) resize(elements.length  / 2);
         assert isMinHeap();
@@ -99,13 +95,13 @@ public class MinHeap {
     }
     
     private boolean greater(int i, int j) {
-        return elements[i] > elements[j];
+        return this.elements[i] > this.elements[j];
     }
 
     private void exchange(int i, int j) {
-        int swap = elements[i];
-        elements[i] = elements[j];
-        elements[j] = swap;
+        int swap = this.elements[i];
+        this.elements[i] = this.elements[j];
+        this.elements[j] = swap;
     }
 
     // is pq[1..N] a min heap?
@@ -114,7 +110,7 @@ public class MinHeap {
     }
 
     void print() {
-        for (int i = 1; i <= size; i++) System.out.print(elements[i] + " ");
+        for (int i = 1; i <= size; i++) System.out.print(this.elements[i] + " ");
         System.out.println();
     }
     

@@ -38,7 +38,7 @@ public class Test {
     	heap.extractMin();
     	
     	int fifty = heap.extractMin();
-    	System.out.println("Extracted element was " + fifty +  "\n");
+    	System.out.println("Last extracted element was " + fifty +  "\n");
     	heap.print();
     	System.out.println("Heap size is now " + (heap.size) + "\n");
     }
