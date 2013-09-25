@@ -114,7 +114,7 @@ public class MinHeap {
     }
 
     void print() {
-        for (int i = 1; i < size; i++) System.out.print(elements[i] + " ");
+        for (int i = 1; i <= size; i++) System.out.print(elements[i] + " ");
         System.out.println();
     }
     
