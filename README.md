@@ -14,7 +14,7 @@ Algorithms and Data Structures (IF672) discipline at CIn/UFPE
 | Max Heap (binary)                                             | Implemented      |
 | Binary Search Tree                                            | Implemented      |
 | Adelson-Velskii and Landis' (AVL) Tree                        | Implemented      |
-| Disjoint Set                                                  | Pending          |
+| Disjoint Set (union-find)                                     | Implemented      |
 | Hash Table                                                    | Implemented      |
 | Bloom Filter                                                  | Pending          |
 
