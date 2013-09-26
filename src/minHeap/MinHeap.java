@@ -31,7 +31,7 @@ public class MinHeap {
 
     public MinHeap(int[] keys) {
         size = keys.length;
-        elements = (int[]) new int[keys.length + 1];
+        elements = new int[keys.length + 1];
         for (int i = 0; i < size; i++)
             this.elements[i+1] = keys[i];
         for (int k = size/2; k >= 1; k--)
