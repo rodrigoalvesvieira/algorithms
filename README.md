@@ -15,7 +15,7 @@ Algorithms and Data Structures (IF672) discipline at CIn/UFPE
 | Binary Search Tree                                            | Implemented      |
 | Adelson-Velskii and Landis' (AVL) Tree                        | Implemented      |
 | Disjoint Set                                                  | Pending          |
-| Hash Table                                                    | Pending          |
+| Hash Table                                                    | Implemented      |
 | Bloom Filter                                                  | Pending          |
 
 ## Sorting
