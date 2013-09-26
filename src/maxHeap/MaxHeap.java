@@ -2,132 +2,136 @@ package maxHeap;
 
 /**
  *  Max Heap (binary) implementation
+ *  
  *  @author Rodrigo Alves @ CIn/UFPE
+ *  Based on implementation by Robert Sedgewick and Kevin Wayne at Princeton
+ *
  *  http://en.wikipedia.org/wiki/Binary_heap
+ *  
+ * At any time, the Max Heap must satisfy the heap property:
+ * 
+ * array[n] >= array[2*n]   // parent element => left child and
+ * 
+ * array[n] >= array[2*n+1] // parent element => right child
  */
-class MaxHeap {
-    int[] elements;
+public class MaxHeap {
+    private int[] elements;
     int size;
 
-    public MaxHeap() {
+    public MaxHeap(int initCapacity) {
+        this.elements = new int[initCapacity + 1];
         this.size = 0;
-        this.elements = new int[1000];
+    }
+
+    public MaxHeap() {
+        this(1);
+    }
+
+    /**
+     * Initializes a priority queue from the array of keys.
+     * Takes time proportional to the number of keys, using sink-based heap construction.
+     * @param keys the array of keys
+     */
+    public MaxHeap(int[] keys) {
+        size = keys.length;
+        this.elements = new int[keys.length + 1]; 
+        for (int i = 0; i < size; i++)
+        	this.elements[i+1] = keys[i];
+        for (int k = size/2; k >= 1; k--)
+            sink(k);
+        assert isMaxHeap();
     }
     
-    public MaxHeap(int col) {
-    	this.size = 0;
-    	this.elements = new int[col];
+    /**
+     * Is the priority queue empty?
+     * @return true if the priority queue is empty; false otherwise
+     */
+    public boolean isEmpty() {
+        return this.size == 0;
+    }
+
+    /**
+     * Returns a largest key on the priority queue.
+     * @return a largest key on the priority queue
+     */
+    public int max() {
+        return this.elements[1];
+    }
+
+    // helper function to double the size of the heap array
+    private void resize(int capacity) {
+        assert capacity > size;
+        int[] temp = new int[capacity];
+        for (int i = 1; i <= this.size; i++) temp[i] = this.elements[i];
+        this.elements = temp;
+    }
+
+    /**
+     * Adds a new key to the priority queue.
+     * @param x the new key to add to the priority queue
+     */
+    public void insert(int x) {
+        // double size of array if necessary
+        if (size >= elements.length - 1) resize(2 * elements.length);
+
+        // add x, and percolate it up to maintain heap invariant
+        elements[++size] = x;
+        bubbleUp(size);
+        assert isMaxHeap();
+    }
+
+    public int extractMax() {
+    	int max = elements[1];
+        exchange(1, size--);
+    	sink(1);
+        if ((size > 0) && (size == (elements.length - 1) / 4)) resize(elements.length / 2);
+        assert isMaxHeap();
+        return max;
     }
     
-    void bubbleUp() {
-    	int i = this.size;
-    	while (i > 1 && this.elements[i] >= this.elements[i/2]) {
-    		exchange(i, i/2);
-    		i = i/2;
-    	}
-    }
-
-    int parent(int i) {
-        return i / 2;
-    }
-
-    int left(int i) {
-        return 2 * i;
-    }
-
-    int right(int i) {
-        return 2 * i + 1;
-    }
-    
-    private void exchange(int j, int k) {
-    	int swap = this.elements[j];
-    	this.elements[j] = this.elements[k];
-    	this.elements[k] = swap;
-    }
-
-    void siftDown(int i) {
-        int l = left(i);
-        int r = right(i);
-        int smallest;
-        
-        if (l < size && (elements[l] < elements[i])) {
-            smallest = l;
-        } else {
-            smallest = i;
-        }
-        if (r < size && elements[r] < elements[smallest]) smallest = r;
-
-        if (smallest != i) {
-            int temp = elements[i];
-            elements[i] = elements[smallest];
-            elements[smallest] = temp;
-            siftDown(smallest);
+    private void bubbleUp(int k) {
+        while (k > 1 && less(k/2, k)) {
+            exchange(k, k/2);
+            k = k/2;
         }
     }
 
-    int extract() {
-        if (size < 1) return (Integer) null;
-
-        int min = elements[1];
-        elements[0] = elements[size - 1];
-        elements[size] = (Integer) null;
-        size--;
-        siftDown(0);
-        return min;
-    }
-
-    void remove(int v) {
-        for (int i = 0; i < size; ++i) {
-            if (elements[i] == v) {
-                removeAt(i);
-                break;
-            }
+    private void sink(int k) {
+        while (2*k <= size) {
+            int j = 2*k;
+            if (j < size && less(j, j+1)) j++;
+            if (!less(k, j)) break;
+            exchange(k, j);
+            k = j;
         }
     }
 
-    void removeAt(int where) {
-        if (size == 0) return;
-        if (where >= size) return;
-
-        if (where == size-1) {
-            --size;
-            return;
-        }
-        elements[where] = elements[size-1];
-        --size;
-
-        if (where > 0 && Double.compare(elements[where], (elements[(where-1)/2])) > 0) {
-            siftUp(where);
-        } else if (where < size/2) {
-            siftDown(where);
-        }
+    private boolean less(int i, int j) {
+        return this.elements[i] < this.elements[j];
     }
 
-    void siftUp(int i) {
-        int par;
-        int temp;
-        if (i != 0) {
-            par = parent(i);
-            if (elements[par] > elements[i] || elements[i] == 'F') {
-                temp = elements[par];
-                elements[par] = elements[i];
-                elements[i] = temp;
-                siftUp(par);
-            }
-        }
-    }
-
-    void insert(int key) {
-        elements[++size] = key;
-        siftUp(size);
-    }
-
-    boolean empty() {
-        return (size == 0);
+    private void exchange(int i, int j) {
+        int swap = this.elements[i];
+        this.elements[i] = this.elements[j];
+        this.elements[j] = swap;
     }
 
     void print() {
-        for (int i = 1; i < size; i++) System.out.print(elements[i] + " ");
+        for (int i = 1; i <= size; i++) System.out.print(elements[i] + " ");
         System.out.println();
     }
-};
+    
+    // is pq[1..N] a max heap?
+    private boolean isMaxHeap() {
+        return isMaxHeap(1);
+    }
+
+    // is subtree of pq[1..N] rooted at k a max heap?
+    private boolean isMaxHeap(int k) {
+        if (k > size) return true;
+        int left = 2*k, right = 2*k + 1;
+        if (left  <= size && less(k, left))  return false;
+        if (right <= size && less(k, right)) return false;
+        return isMaxHeap(left) && isMaxHeap(right);
+    }
+}

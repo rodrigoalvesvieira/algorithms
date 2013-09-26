@@ -11,7 +11,7 @@ Algorithms and Data Structures (IF672) discipline at CIn/UFPE
 | Queue                                                         | Implemented      |
 | Stack                                                         | Implemented      |
 | Min Heap (binary)                                             | Implemented      |
-| Max Heap (binary)                                             | Pending          |
+| Max Heap (binary)                                             | Implemented      |
 | Binary Search Tree                                            | Implemented      |
 | Adelson-Velskii and Landis' (AVL) Tree                        | Implemented      |
 | Disjoint Set                                                  | Pending          |
