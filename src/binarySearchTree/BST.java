@@ -1,9 +1,11 @@
-// Binary Search Tree implementation
-// Rodrigo Alves @ CIn/UFPE
-// http://en.wikipedia.org/wiki/Binary_search_tree
-
 package binarySearchTree;
 
+/**
+ * Binary Search Tree implementation
+ * 
+ * @author Rodrigo Alves @ CIn/UFPE
+ * http://en.wikipedia.org/wiki/Binary_search_tree
+ */
 class BST {
 	BST left;
 	BST right;

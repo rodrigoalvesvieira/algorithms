@@ -15,22 +15,45 @@ import java.util.BitSet;
  * 
  * We can be sure that something *IS NOT* in the set
  * 
+ * Study material:
+ * 
+ * http://www.javamex.com/tutorials/collections/bloom_filter_java.shtml
+ * http://www.javamex.com/tutorials/collections/bloom_filter_false_positives.shtml
+ * http://www.javamex.com/tutorials/collections/bloom_filter_false_positives_graph.shtml
+ * 
  * @author Rodrigo Alves @ CIn/UFPE
  *
  */
 public class BloomFilter {
-	  private static final int MAX_HASHES = 8;
-	  private static final long[] byteTable;
-	  private static final long HSTART = 0xBB40E64DA205B064L;
-	  private static final long HMULT = 7664345821815920749L;
-	  
-	  private final BitSet data;
-	  private final int noHashes;
-	  private final int hashMask;
-	  
-	  static {
-	    byteTable = new long[256 * MAX_HASHES];
-	    long h = 0x544B2FBACAAF1684L;
+	private static final int MAX_HASHES = 8;
+	private static final long[] byteTable;
+	private static final long HSTART = 0xBB40E64DA205B064L;
+	private static final long HMULT = 7664345821815920749L;
+	
+	private final BitSet data;
+	private final int noHashes;
+	private final int hashMask;
+	
+	public void add(String s) {
+		for (int n = 0; n < noHashes; n++) {
+			long hc = hashCode(s, n);
+			int bitNo = (int) (hc) & this.hashMask;
+			data.set(bitNo);
+		}
+	}
+	
+	public boolean contains(String s) {
+		for (int n = 0; n < noHashes; n++) {
+			long hc = hashCode(s, n);
+			int bitNo = (int) (hc) & this.hashMask;
+			if (!data.get(bitNo)) return false;
+	    }
+	    return true;
+	}
+	
+	static {
+		byteTable = new long[256 * MAX_HASHES];
+		long h = 0x544B2FBACAAF1684L;
 	    for (int i = 0; i < byteTable.length; i++) {
 	      for (int j = 0; j < 31; j++)
 	        h = (h >>> 7) ^ h; h = (h << 11) ^ h; h = (h >>> 10) ^ h;
@@ -76,22 +99,5 @@ public class BloomFilter {
 		    this.data = new BitSet(1 << logBits);
 		    this.noHashes = noHashes;
 		    this.hashMask = (1 << logBits) - 1;
-		  }
-	  
-	  public void add(String s) {
-		    for (int n = 0; n < noHashes; n++) {
-		      long hc = hashCode(s, n);
-		      int bitNo = (int) (hc) & this.hashMask;
-		      data.set(bitNo);
-		    }
-		  }
-
-		  public boolean contains(String s) {
-		    for (int n = 0; n < noHashes; n++) {
-		      long hc = hashCode(s, n);
-		      int bitNo = (int) (hc) & this.hashMask;
-		      if (!data.get(bitNo)) return false;
-		    }
-		    return true;
 		  }
 }
