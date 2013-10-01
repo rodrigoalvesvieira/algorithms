@@ -37,6 +37,7 @@ class List {
     		while(helper.next != null) {
     			if (helper.next != null) helper = helper.next;
     		}
+    		
     		helper.next = node;
     	}
     	
@@ -104,74 +105,82 @@ class List {
  */
 public class BFS {
 	
-	public static void printGraph(List[] Adj, int N) {
-		int i = 1;
-		for (; i < N; i++) {
-			System.out.println("Vertex " + i);
-			System.out.println(Adj[i]);
+	public static void printGraph(List[] Adj) {
+		int N = Adj.length;
+		for (int i = 0; i < N; i++) {
+			Adj[i].print();
 		}
 	}
 
 	public static void main(String[] args) {
-		Arquivo file = new Arquivo("./Graph.txt", "output.txt");
+		Arquivo file = new Arquivo("./BFS.txt", "output.txt");
 		
 		int T, N, Q, E, x, vertex; boolean empty;
 		T = file.readInt();
 		
-		System.out.println(T);
-		
 		while (T > 0) {
 			N = file.readInt();
 			
-			int i = 0, j = 0, t;
+			int j = 0, t;
 			int[] marked;
 			List[] Adj = new List[N];
 			
-			for (; i < N; i++) {
+			for (int p = 0; p < N; p++) Adj[p] = new List();
+			
+			for (int i = 0; i < N; i++) {
 				Q = file.readInt();
+
 				while (Q > 0) {
-					Adj[i].push(Q);
+					x = file.readInt();
+					Adj[i].push(x);
 					Q--;
 				}
 			}
 			
-			printGraph(Adj, N);
+//			printGraph(Adj);
 			E = file.readInt();
+			Queue A = new Queue();
 			
 			while (E > 0) {
-				Queue A = new Queue();
 				marked = new int[N];
 				vertex = file.readInt();
 				
+				System.out.println("Vertex to be enqueued is " + vertex);
+				
 				A.enqueue(vertex);
+				A.print();
+				
 				marked[vertex] = 1;
 				empty = false;
 				
-				while (!A.isEmpty()) {
-					if (Adj[vertex].isEmpty()) {
-						empty = true;
-						break;
-					}
+//				while (!A.isEmpty()) {
+//					if (Adj[vertex].isEmpty()) {
+//						empty = true;
+//						break;
+//					}
 					
-					t = A.dequeue();
+//					System.out.println(A.size);
+					
+//					t = A.dequeue();
+//					System.out.println("t é " + t);
+					
 					/*
-					Node helper = Adj[t].first;
-					
- 					while (helper != null) {
-						if (!marked[helper.value]) {
-							marked[helper.value] = 1;
-							A.enqueue(helper.value);
-						}
-						
-						helper = helper.next;
-					}
-					*/
-				}
+//					Node helper = Adj[t].first;
+//					
+// 					while (helper != null) {
+//						if (!marked[helper.value]) {
+//							marked[helper.value] = 1;
+//							A.enqueue(helper.value);
+//						}
+//						
+//						helper = helper.next;
+//					}
+//					*/
+//				}
 				
 				E--;
 			}
-			
-			System.out.println("hey hello");
+						
 			T--;
 		}
 	}

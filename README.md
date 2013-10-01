@@ -22,19 +22,27 @@ Algorithms and Data Structures (IF672) discipline at CIn/UFPE
 
 | Algorithm                      | Status           |
 | ------------------------------ |:----------------:|
-| Insertion sort                 | Pending          |
+| Insertion sort                 | Implemented      |
 | Bubble sort                    | Pending          |
-| Selection sort                 | Pending          |
-| Shellsort                      | Pending          |
+| Selection sort                 | Implemented      |
+| Shellsort                      | Implemented      |
 | Quicksort                      | Implemented      |
-| Mergesort                      | Pending          |
-| Convex Hull                    | Pending          |
+| Mergesort                      | Implemented      |
 
 ## Searching
 
 | Algorithm                      | Status           |
 | ------------------------------ |:----------------:|
 | Binary Search                  | Implemented      |
+
+## Graph
+
+| Algorithm                           | Status           |
+| ----------------------------------- |:----------------:|
+| Breadth-First Search                | Implemented      |
+| Depth-First Search                  | Pending          |
+| Dijkstra's algorithm                | Pending          |
+| Convex Hull (Graham scan)           | Pending          |
 
 ## Algorithms
 

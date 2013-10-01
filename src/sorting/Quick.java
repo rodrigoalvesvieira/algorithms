@@ -89,10 +89,6 @@ public class Quick {
         a[j] = swap;
     }
 
-
-   /***********************************************************************
-    *  Check if array is sorted - useful for debugging
-    ***********************************************************************/
     private static boolean isSorted(int[] a) {
         return isSorted(a, 0, a.length - 1);
     }
