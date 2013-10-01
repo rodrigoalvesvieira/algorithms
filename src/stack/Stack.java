@@ -15,7 +15,7 @@ class Node {
 	}
 }
 
-class Stack {
+public class Stack {
 	public Node top;
 	public Node begin;
 	int size;

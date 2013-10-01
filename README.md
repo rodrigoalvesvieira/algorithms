@@ -44,6 +44,14 @@ Algorithms and Data Structures (IF672) discipline at CIn/UFPE
 | Dijkstra's algorithm                | Pending          |
 | Convex Hull (Graham scan)           | Pending          |
 
+## Other Important Algorithms
+
+
+| Algorithm                           | Status           |
+| ----------------------------------- |:----------------:|
+| Infix Expressions Evaluator         | Pending          |
+
+
 ## Algorithms
 
 * Algorithms Implementations at Princeton University http://algs4.cs.princeton.edu/code/
