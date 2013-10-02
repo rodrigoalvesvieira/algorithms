@@ -33,10 +33,10 @@ import minHeap.MinHeap;
 public class Rodrigosort {
 	
 	public static void main(String[] args) {
-		Arquivo file = new Arquivo("./inputs/many-integers.txt", "output.txt");
+//		Arquivo file = new Arquivo("./inputs/many-integers.txt", "output.txt");
 		
 		// For compiling via Command Line
-//		Arquivo file = new Arquivo("../../inputs/many-integers.txt", "output.txt");
+		Arquivo file = new Arquivo("../../inputs/many-many-integers.txt", "output.txt");
 		
 		int N = file.readInt();
 
