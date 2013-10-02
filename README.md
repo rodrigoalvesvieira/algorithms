@@ -23,7 +23,7 @@ Algorithms and Data Structures (IF672) discipline at CIn/UFPE
 | Algorithm                      | Stability          | Status           |
 | ------------------------------ |:------------------ |:----------------:|
 | Insertion sort                 | Stable             | Implemented      |
-| Bubble sort                    |                    | Pending          |
+| Bubble sort                    | Stable             | Implemented      |
 | Selection sort                 | Not stable         | Implemented      |
 | Shellsort                      | Not stable         | Implemented      |
 | Quicksort                      | Not stable         | Implemented      |
