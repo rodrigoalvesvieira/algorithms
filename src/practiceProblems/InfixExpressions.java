@@ -16,12 +16,12 @@ public class InfixExpressions {
 		Stack numbers, operators;
 		String expression;
 		
-		Arquivo file = new Arquivo("./InfixExpressions.txt", "output.txt");
+		Arquivo file = new Arquivo("./inputs/InfixExpressions.txt", "output.txt");
 		
 		while (!file.isEndOfFile()) {
 			numbers = new Stack();
 			operators = new Stack();
-			expression = "(" + file.readString() + ")";
+			expression = file.readString();
 			
 			System.out.println(expression);	
 		}

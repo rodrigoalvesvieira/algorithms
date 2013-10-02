@@ -113,7 +113,7 @@ public class BFS {
 	}
 
 	public static void main(String[] args) {
-		Arquivo file = new Arquivo("./BFS.txt", "output.txt");
+		Arquivo file = new Arquivo("./inputs/BFS.txt", "output.txt");
 		
 		int T, N, Q, E, x, vertex; boolean empty;
 		T = file.readInt();
