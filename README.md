@@ -51,6 +51,17 @@ Algorithms and Data Structures (IF672) discipline at CIn/UFPE
 | ----------------------------------- |:----------------:|
 | Infix Expressions Evaluator         | Pending          |
 
+## Compiling
+
+For compiling directly via command-line (No Eclipse or other IDE), do:
+
+```
+$ cd src/shared`
+
+$ javac -sourcepath .. Rodrigosort.java`
+
+$ java -cp .. Rodrigosort.Program
+```
 
 ## Algorithms
 
