@@ -28,6 +28,7 @@ Algorithms and Data Structures (IF672) discipline at CIn/UFPE
 | Shellsort                      | Not stable         | Implemented      |
 | Quicksort                      | Not stable         | Implemented      |
 | Mergesort                      | Stable             | Implemented      |
+| Rodrigosort                    |                    | Implemented      |
 
 ## Searching
 
