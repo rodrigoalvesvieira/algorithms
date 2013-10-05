@@ -20,15 +20,15 @@ Algorithms and Data Structures (IF672) discipline at CIn/UFPE
 
 ## Sorting
 
-| Algorithm                      | Stability          | Status           |
-| ------------------------------ |:------------------ |:----------------:|
-| Insertion sort                 | Stable             | Implemented      |
-| Bubble sort                    | Stable             | Implemented      |
-| Selection sort                 | Not stable         | Implemented      |
-| Shellsort                      | Not stable         | Implemented      |
-| Quicksort                      | Not stable         | Implemented      |
-| Mergesort                      | Stable             | Implemented      |
-| Rodrigosort                    |                    | Implemented      |
+| Algorithm            | Stability          | Status           | Remarks                                |
+| -------------------- |:------------------ | ----------------:| :-------------------------------------:|
+| Insertion sort       | Stable             | Implemented      | Use for small N or partially ordered   |
+| Bubble sort          | Stable             | Implemented      |                                        |
+| Selection sort       | Not stable         | Implemented      | N exchanges                            |
+| Shellsort            | Not stable         | Implemented      |                                        |
+| Quicksort            | Not stable         | Implemented      | Fastest in practice. Mostly N log N    |
+| Mergesort            | Stable             | Implemented      | N log N guarantee                      |
+| Rodrigosort          |                    | Implemented      |                                        |
 
 ## Searching
 
