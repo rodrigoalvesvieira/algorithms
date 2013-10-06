@@ -32,9 +32,9 @@ Algorithms and Data Structures (IF672) discipline at CIn/UFPE
 
 ## Searching
 
-| Algorithm                      | Status           |
-| ------------------------------ |:----------------:|
-| Binary Search                  | Implemented      |
+| Algorithm                            | Status           |
+| ------------------------------------ |:----------------:|
+| Binary Search                        | Implemented      |
 
 ## Graph
 
@@ -43,7 +43,8 @@ Algorithms and Data Structures (IF672) discipline at CIn/UFPE
 | Breadth-First Search                | Implemented      |
 | Depth-First Search                  | Pending          |
 | Dijkstra's algorithm                | Pending          |
-| Convex Hull (Graham scan)           | Pending          |
+| Kruskal MSP                         | Pending          |
+| Prim MSP                            | Pending          |
 
 ## Other Important Algorithms
 
@@ -51,6 +52,7 @@ Algorithms and Data Structures (IF672) discipline at CIn/UFPE
 | Algorithm                           | Status           |
 | ----------------------------------- |:----------------:|
 | Infix Expressions Evaluator         | Pending          |
+| Convex Hull (Graham scan)           | Pending          |
 
 ## Compiling
 

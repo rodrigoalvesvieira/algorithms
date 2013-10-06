@@ -4,6 +4,7 @@ import java.util.BitSet;
 
 /**
  * Bloom Filter implementation
+ * "Set" data structure
  * http://en.wikipedia.org/wiki/Bloom_filter
  * 
  * A space-efficient probabilistic data structure
