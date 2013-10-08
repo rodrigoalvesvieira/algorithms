@@ -16,6 +16,8 @@ public class Test {
 		queue.enqueue(77);
 		queue.enqueue(666);
 		
+		queue.print();
+		
 		Node a = queue.search(77);
 		System.out.println("Valor: " + a.value + " prev: " + a.previous.value + " next: " + a.next.value);
 		

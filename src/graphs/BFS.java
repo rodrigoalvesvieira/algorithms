@@ -106,8 +106,7 @@ class List {
 public class BFS {
 	
 	public static void printGraph(List[] Adj) {
-		int N = Adj.length;
-		for (int i = 0; i < N; i++) {
+		for (int i = 0; i < Adj.length; i++) {
 			Adj[i].print();
 		}
 	}
@@ -137,50 +136,49 @@ public class BFS {
 				}
 			}
 			
-//			printGraph(Adj);
 			E = file.readInt();
 			Queue A = new Queue();
-			
+
 			while (E > 0) {
 				marked = new int[N];
 				vertex = file.readInt();
 				
-				System.out.println("Vertex to be enqueued is " + vertex);
-				
+//				System.out.println("Vertex to be enqueued is " + vertex);
 				A.enqueue(vertex);
-				A.print();
+				
+//				System.out.println("lol");
+//A.print();
+//				System.out.println("llaa");
 				
 				marked[vertex] = 1;
 				empty = false;
+				
+				t = A.dequeue();
+				System.out.println("t - " + t);
 				
 //				while (!A.isEmpty()) {
 //					if (Adj[vertex].isEmpty()) {
 //						empty = true;
 //						break;
 //					}
-					
-//					System.out.println(A.size);
-					
+//					
 //					t = A.dequeue();
 //					System.out.println("t é " + t);
-					
-					/*
+//					
 //					Node helper = Adj[t].first;
 //					
 // 					while (helper != null) {
-//						if (!marked[helper.value]) {
+//						if (marked[helper.value] == 0) {
 //							marked[helper.value] = 1;
 //							A.enqueue(helper.value);
 //						}
 //						
 //						helper = helper.next;
 //					}
-//					*/
 //				}
 				
 				E--;
 			}
-						
 			T--;
 		}
 	}
