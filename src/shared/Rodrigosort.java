@@ -29,6 +29,7 @@ import minHeap.MinHeap;
  * 
  * Time Complexity is O(N + (N * log(n)))
  * Verdict: linearithmic
+ * 
  */
 public class Rodrigosort {
 	

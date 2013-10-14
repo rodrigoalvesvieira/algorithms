@@ -49,10 +49,11 @@ Algorithms and Data Structures (IF672) discipline at CIn/UFPE
 ## Other Important Algorithms
 
 
-| Algorithm                           | Status           |
-| ----------------------------------- |:----------------:|
-| Infix Expressions Evaluator         | Pending          |
-| Convex Hull (Graham scan)           | Pending          |
+| Algorithm                                     | Status           |
+| ----------------------------------------------|:----------------:|
+| Infix Expressions Evaluator                   | Pending          |
+| Convex Hull (Graham scan)                     | Pending          |
+| Strassen algorithm for Matrix multiplication  | Pending          |
 
 ## Compiling
 
@@ -71,6 +72,7 @@ $ java -cp .. Rodrigosort.Program
 * Algorithms Implementations at Princeton University http://algs4.cs.princeton.edu/code/
 * Algorithms at Princeton University http://algs4.cs.princeton.edu/home/
 * IME/USP Análise de Algoritmos http://www.ime.usp.br/~pf/analise_de_algoritmos/index.html
+* Algoritmos para Grafos http://www.ime.usp.br/~pf/algoritmos_para_grafos/index.html
 * Algorithms Course Materials http://compgeom.cs.uiuc.edu/~jeffe/teaching/algorithms/
 * Big-O cheat sheet http://bigocheatsheet.com/
 * Computer Science animated http://www.csanimated.com

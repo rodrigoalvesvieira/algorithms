@@ -14,23 +14,23 @@ public class Test {
     	for (int i = 0; i < inputs.length; i++) heap.insert(inputs[i]);
     	heap.print();
     	
-    	System.out.println("Heap size is now " + (heap.size) + "\n");
+    	System.out.println("Heap size is now " + (heap.heapSize) + "\n");
     	
     	System.out.println("Extract min returns " +  heap.extractMin());
 
     	heap.print();
-    	System.out.println("Heap size is now " + (heap.size) + "\n");
+    	System.out.println("Heap size is now " + (heap.heapSize) + "\n");
     	
     	System.out.println("Extract min returns " +  heap.extractMin());
 
     	heap.print();
-    	System.out.println("Heap size is now " + (heap.size) + "\n");
+    	System.out.println("Heap size is now " + (heap.heapSize) + "\n");
     	
     	System.out.println("Inserting 3");
     	heap.insert(3);
 
     	heap.print();
-    	System.out.println("Heap size is now " + (heap.size) + "\n");
+    	System.out.println("Heap size is now " + (heap.heapSize) + "\n");
     	
     	System.out.println("Running extractMin() 4 times");
     	heap.extractMin();
@@ -40,6 +40,6 @@ public class Test {
     	int fifty = heap.extractMin();
     	System.out.println("Last extracted element was " + fifty +  "\n");
     	heap.print();
-    	System.out.println("Heap size is now " + (heap.size) + "\n");
+    	System.out.println("Heap size is now " + (heap.heapSize) + "\n");
     }
 }

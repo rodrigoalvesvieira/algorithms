@@ -1,5 +1,6 @@
 package graphs;
 
+import stack.Stack;
 import shared.Arquivo;
 
 /**
