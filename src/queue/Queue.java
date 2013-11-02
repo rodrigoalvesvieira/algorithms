@@ -40,7 +40,7 @@ public class Queue {
 	}
 
     public int dequeue() {
-    	if (this.front == null) {
+    	if (this.isEmpty()) {
     		return -1;
         } else {
             int res = this.front.value;

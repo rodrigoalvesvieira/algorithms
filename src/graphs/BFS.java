@@ -104,9 +104,9 @@ class List {
  *
  */
 public class BFS {
-	
 	public static void printGraph(List[] Adj) {
 		for (int i = 0; i < Adj.length; i++) {
+			System.out.print("Vertex " + i + ": ");
 			Adj[i].print();
 		}
 	}
@@ -135,50 +135,55 @@ public class BFS {
 					Q--;
 				}
 			}
+						
+			printGraph(Adj);
 			
 			E = file.readInt();
+
 			Queue A = new Queue();
 
 			while (E > 0) {
 				marked = new int[N];
 				vertex = file.readInt();
-				
-//				System.out.println("Vertex to be enqueued is " + vertex);
+								
+				System.out.println("Vertex to be enqueued is " + vertex);
 				A.enqueue(vertex);
-				
-//				System.out.println("lol");
-//A.print();
-//				System.out.println("llaa");
 				
 				marked[vertex] = 1;
 				empty = false;
 				
-				t = A.dequeue();
-				System.out.println("t - " + t);
+				A.print();
 				
-//				while (!A.isEmpty()) {
-//					if (Adj[vertex].isEmpty()) {
-//						empty = true;
-//						break;
-//					}
-//					
-//					t = A.dequeue();
-//					System.out.println("t é " + t);
-//					
-//					Node helper = Adj[t].first;
-//					
-// 					while (helper != null) {
-//						if (marked[helper.value] == 0) {
-//							marked[helper.value] = 1;
-//							A.enqueue(helper.value);
-//						}
-//						
-//						helper = helper.next;
-//					}
-//				}
+				while (!A.isEmpty()) {
+					if (Adj[vertex].isEmpty()) {
+						empty = true;
+						break;
+					}
+					
+					System.out.println("X");
+					
+					t = A.dequeue();
+					
+					System.out.println("t is " + t);
+					System.out.println("Y");
+					
+					System.out.println("t é " + t);
+					
+					Node helper = Adj[t].first;
+					
+ 					while (helper != null) {
+						if (marked[helper.value] == 0) {
+							marked[helper.value] = 1;
+							A.enqueue(helper.value);
+						}
+						
+						helper = helper.next;
+					}
+				}
 				
 				E--;
 			}
+			
 			T--;
 		}
 	}

@@ -49,30 +49,40 @@ public class BloomFilter {
 			int bitNo = (int) (hc) & this.hashMask;
 			if (!data.get(bitNo)) return false;
 	    }
+		
 	    return true;
 	}
 	
 	static {
 		byteTable = new long[256 * MAX_HASHES];
+		
 		long h = 0x544B2FBACAAF1684L;
-	    for (int i = 0; i < byteTable.length; i++) {
-	      for (int j = 0; j < 31; j++)
-	        h = (h >>> 7) ^ h; h = (h << 11) ^ h; h = (h >>> 10) ^ h;
+	    
+		for (int i = 0; i < byteTable.length; i++) {
+	      for (int j = 0; j < 31; j++) {
+	        h = (h >>> 7) ^ h;
+	        h = (h << 11) ^ h;
+	        h = (h >>> 10) ^ h;
+	      }
+	      
 	      byteTable[i] = h;
 	    }
 	  }
 
 	  private long hashCode(String s, int hcNo) {
-	    long h = HSTART;
-	    final long hmult = HMULT;
-	    final long[] ht = byteTable;
-	    int startIx = 256 * hcNo;
-	    for (int len = s.length(), i = 0; i < len; i++) {
-	      char ch = s.charAt(i);
-	      h = (h * hmult) ^ ht[startIx + (ch & 0xff)];
-	      h = (h * hmult) ^ ht[startIx + ((ch >>> 8) & 0xff)];
-	    }
-	    return h;
+		  long h = HSTART;
+		  final long hmult = HMULT;
+	      final long[] ht = byteTable;
+	    
+	      int startIx = 256 * hcNo;
+	    
+	      for (int len = s.length(), i = 0; i < len; i++) {
+	    	  char ch = s.charAt(i);
+	    	  h = (h * hmult) ^ ht[startIx + (ch & 0xff)];
+	    	  h = (h * hmult) ^ ht[startIx + ((ch >>> 8) & 0xff)];
+	      }
+	      
+	      return h;
 	  }
 
 
