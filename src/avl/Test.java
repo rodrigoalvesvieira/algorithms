@@ -3,6 +3,7 @@
  * Animation available at http://www.qmatica.com/DataStructures/Trees/AVL/AVLTree.html
  * To better see it in action. Click Options and enable "factors"
  */
+
 package avl;
 
 public class Test {
@@ -24,9 +25,9 @@ public class Test {
 		System.out.println();
 		
 		tree = AVL.remove(tree, 90);
-		tree = AVL.recalcularBalance(tree);
+		tree = AVL.calculateBalance(tree);
 		tree = AVL.remove(tree, 70);
-		tree = AVL.recalcularBalance(tree);
+		tree = AVL.calculateBalance(tree);
 		
 		System.out.println("Pre order:");
 		AVL.preOrder(tree);
@@ -44,6 +45,6 @@ public class Test {
 		
 		// Searching for a node in the tree which has the value 30 as key
 		AVL a = AVL.search(tree, 30);
-		System.out.println("Node key=>" + a.key + ", balance=>" + a.balance);
+		System.out.println("Node key => " + a.key + ", balance => " + a.balance);
 	}
 }

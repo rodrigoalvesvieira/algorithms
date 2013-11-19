@@ -6,6 +6,7 @@ package binarySearchTree;
  * @author Rodrigo Alves @ CIn/UFPE
  * http://en.wikipedia.org/wiki/Binary_search_tree
  */
+
 class BST {
 	BST left;
 	BST right;
