@@ -54,6 +54,29 @@ class List {
     	}
     	this.size++;
     }
+    
+    public void pop(int v) {
+    	Node helper = this.begin;
+    	
+    	while (helper != null) {
+    		if (helper.value == v) {
+    			if (helper.prev != null) {
+    				helper.prev.next = helper.next;
+    			} else {
+    				System.out.println("caiu no else. nao eh nulo!");
+    				System.out.println("helper eh " + helper.value + 
+    						" e seu prev eh " + helper.prev + " e seu next eh " + helper.next.value);
+    				
+    				helper.prev = helper.next;
+    			}
+    			
+    			helper = null;
+    			break;
+    		}
+    		
+    		helper = helper.next;
+    	}
+    }
    
     public int getBeginValue(){
     	return this.begin.value;

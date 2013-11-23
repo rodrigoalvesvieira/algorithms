@@ -3,8 +3,17 @@ package disjointSet;
 /**
  * Disjoint Set (union-find) data-structure implementation
  * http://en.wikipedia.org/wiki/Disjoint-set_data_structure
+ * http://community.topcoder.com/tc?module=Static&d1=tutorials&d2=disjointDataStructure
  * 
+ * Two sets are disjoint if their intersection is null
+ * 
+ * For example set {1, 2, 3} and set {1, 5, 6} aren’t disjoint because they have in common {1}, but the sets
+ * {1, 2, 3} and {5, 6} are disjoint because their intersection is null.
+ *  
+ * In a data structure of disjoint sets every set contains a representative, which is one member of the set.
+ *  
  * Based on implementation by Mark Allen Weiss
+ * 
  */
 public class DisjointSet {
 	int[] elements;
@@ -13,13 +22,13 @@ public class DisjointSet {
      *  @param numElements the initial number of disjoint sets. Every element is initially in its own set
      **/
     public DisjointSet(int numElements) {
-	    this.elements = new int [numElements];
+	    this.elements = new int[numElements];
 	    for (int i = 0; i < this.elements.length; i++) this.elements[i] = -1;
     }
 
     /**
-     *  union() unites two disjoint sets into a single set.  A union-by-rank
-     *  heuristic is used to choose the new root.  This method will corrupt
+     *  Unites two disjoint sets into a single set. A union-by-rank
+     *  heuristic is used to choose the new root. This method will corrupt
      *  the data structure if root1 and root2 are not roots of their respective
      *  sets, or if they're identical.
      *
@@ -39,7 +48,7 @@ public class DisjointSet {
     }
 
     /**
-     *  find() finds the (int) name of the set containing a given element.
+     *  Finds the (int) name of the set containing a given element.
      *  Performs path compression along the way.
      *
      *  @param x the element sought.

@@ -2,18 +2,21 @@ package practiceProblems;
 
 import java.util.Arrays;
 
+/**
+ * Fast implementation of the 2-Sum Algorithm using Binary Search
+ * @author Rodrigo Alves @ CIn/UFPE
+ *
+ */
 public class TwoSumFast {
 	
 	public static int sum(int[] a) {
-		int N = a.length;
+		int j, k, N = a.length, cnt = 0;
 		Arrays.sort(a);
-		int cnt = 0;
-		int j;
 		
 		for (int i = 0; i < N; i++) {
 			j = 0;
 			
-			int k = Arrays.binarySearch(a, -(a[i] + a[j]));
+			k = Arrays.binarySearch(a, -(a[i] + a[j]));
 			if (k > j) cnt++;
 			j++;
 		}
@@ -22,10 +25,8 @@ public class TwoSumFast {
 	}
 	
 	public static void main(String[] args) {
-		int a[] = {10, 2, 6, 8, 4};
+		int a[] = {10, 2, 6, 8, 4, 12};
 		
 		System.out.println(sum(a));
-	
 	}
-
 }
