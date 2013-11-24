@@ -16,7 +16,7 @@ class Node {
 	}
 }
 
-class List {
+public class List {
     private Node begin;
     private Node end;
     int size;
