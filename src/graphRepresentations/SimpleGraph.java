@@ -20,6 +20,15 @@ public class SimpleGraph {
 	}
 	
 	/**
+	 * Adds a given element to a given List
+	 * @param k
+	 * @param number
+	 */
+	public void addToList(int k, int number) {
+		if (k < this.vertices.length) this.vertices[k].push(number);
+	}
+	
+	/**
 	 * Prints the Adjacent nodes to a given node index at vertices[k]
 	 * @param k
 	 */

@@ -67,6 +67,24 @@ $ javac -sourcepath .. Rodrigosort.java`
 $ java -cp .. Rodrigosort.Program
 ```
 
+## Timing Programs
+
+If you're running from the command-line just do:
+
+`$ time java Program`
+
+If you're running Java within an IDE or something like that, just do:
+
+```java
+
+final long startTime = System.currentTimeMillis();
+final long endTime = System.currentTimeMillis();
+
+System.out.println("Total execution time: " + (endTime - startTime));
+```
+
+Within your `main` method.
+
 ## Algorithms
 
 * Algorithms Implementations at Princeton University http://algs4.cs.princeton.edu/code/

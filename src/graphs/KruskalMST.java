@@ -2,7 +2,7 @@ package graphs;
 
 import queue.Queue;
 import minHeap.MinHeap;
-import graphRepresentations.WeightedGraph;
+import graphRepresentations.WeightedDigraph;
 
 /**
  * Kruskal Minimum Spanning Tree algorithm implementation
@@ -15,7 +15,7 @@ public class KruskalMST {
 	double weight;
 	Queue mst = new Queue();
 	
-	public KruskalMST(WeightedGraph G) {
+	public KruskalMST(WeightedDigraph G) {
 		MinHeap pq = new MinHeap();
 		
 		for (int e: G.edges) pq.insert(e);

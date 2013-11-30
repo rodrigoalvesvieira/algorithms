@@ -10,7 +10,6 @@ package graphs;
 public class PrimMST {
 
 	public static void main(String[] args) {
-		
 	}
 
 }
