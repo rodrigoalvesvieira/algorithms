@@ -114,15 +114,17 @@ public class BFS {
 	public static void main(String[] args) {
 		Arquivo file = new Arquivo("./inputs/BFS.txt", "output.txt");
 		
-		int T, N, Q, E, x, vertex; boolean empty;
+		int T, N, Q, E, x, j, t, vertex; boolean empty;
+		int[] marked;
+		List[] Adj;
+		Node helper;
+		Queue A;
 		T = file.readInt();
 		
 		while (T > 0) {
 			N = file.readInt();
-			
-			int j = 0, t;
-			int[] marked;
-			List[] Adj = new List[N];
+			j = 0;
+			Adj = new List[N];
 			
 			for (int p = 0; p < N; p++) Adj[p] = new List();
 			
@@ -137,15 +139,14 @@ public class BFS {
 			}
 						
 			printGraph(Adj);
-			
 			E = file.readInt();
 
-			Queue A = new Queue();
+			A = new Queue();
 
 			while (E > 0) {
 				marked = new int[N];
 				vertex = file.readInt();
-								
+				
 				System.out.println("Vertex to be enqueued is " + vertex);
 				A.enqueue(vertex);
 				
@@ -160,16 +161,9 @@ public class BFS {
 						break;
 					}
 					
-					System.out.println("X");
-					
 					t = A.dequeue();
 					
-					System.out.println("t is " + t);
-					System.out.println("Y");
-					
-					System.out.println("t é " + t);
-					
-					Node helper = Adj[t].first;
+					helper = Adj[t].first;
 					
  					while (helper != null) {
 						if (marked[helper.value] == 0) {
