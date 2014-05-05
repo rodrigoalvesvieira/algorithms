@@ -1,4 +1,4 @@
-package practiceProblems;
+package math;
 
 import shared.Arquivo;
 import stack.Stack;
