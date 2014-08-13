@@ -17,6 +17,8 @@ Algorithms and Data Structures (IF672) discipline at CIn/UFPE
 | Disjoint Set (union-find)                                     | Implemented      |
 | Hash Table                                                    | Implemented      |
 | Bloom Filter                                                  | Pending          |
+| Suffix Array                                                  | Pending          |
+| Suffix Tree                                                   | Pending          |
 
 ## Sorting
 
@@ -45,6 +47,9 @@ Algorithms and Data Structures (IF672) discipline at CIn/UFPE
 | Dijkstra's algorithm                | Pending          |
 | Kruskal MSP                         | Pending          |
 | Prim MSP                            | Pending          |
+| Bellman–Ford algorithm              | Pending          |
+| Floyd–Warshall algorithm            | Pending          |
+| Knuth–Morris–Pratt algorithm        | Pending          |
 
 ## Other Important Algorithms
 
