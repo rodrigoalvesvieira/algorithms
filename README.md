@@ -108,6 +108,13 @@ Within your `main` method.
 * Introduction to Algorithms, 3rd edition. CORMEN, Thomas H. MIT Press and McGraw-Hill
 * Competitive Programming 3. HALIM, Steven. lulu
 
+## Competitive Programming
+
+I am very interested in solving problems from Programming Contests, specially the ones found on the [UVa] website. If you're interested in my solutions to some of their problems, check out this [repo] of mine.
+
 ## Copyright
 
 © 2013-2014 Rodrigo Alves
+
+[UVa]: http://uva.onlinejudge.org/
+[repo]: https://github.com/rodrigoalvesvieira/UVa
