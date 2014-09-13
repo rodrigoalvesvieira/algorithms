@@ -107,6 +107,7 @@ Within your `main` method.
 * Data Structure Visualizations http://www.cs.usfca.edu/~galles/visualization/Algorithms.html
 * Visualizations by Steven Halim http://www.comp.nus.edu.sg/~stevenha/visualization/
 * Sorting Algorithms http://www.sorting-algorithms.com/
+* Algomations http://www.algomation.com/
 
 ## Books
 
