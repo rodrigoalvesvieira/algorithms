@@ -118,6 +118,15 @@ Within your `main` method.
 
 I am very interested in solving problems from Programming Contests, specially the ones found on the [UVa] website. If you're interested in my solutions to some of their problems, check out this [repo] of mine.
 
+## Acknowledgements
+
+Thanks to,
+
+* Professor Paulo G.S da Fonseca
+* Professor Katia S. Guimarães. Ph.D
+
+Without these people, instead of little, I would know nothing about Algorithms. Also, thanks to the whole Internet, for all the infinite amount of knowledge on the field provided for free.
+
 ## Copyright
 
 © 2013-2014 Rodrigo Alves
