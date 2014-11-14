@@ -83,6 +83,7 @@ If you're running Java within an IDE or something like that, just do:
 ```java
 
 final long startTime = System.currentTimeMillis();
+// your awesome code comes here...
 final long endTime = System.currentTimeMillis();
 
 System.out.println("Total execution time: " + (endTime - startTime));
