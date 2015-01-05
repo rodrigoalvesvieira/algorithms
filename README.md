@@ -16,7 +16,9 @@ Algorithms and Data Structures (IF672) discipline at CIn/UFPE
 | Adelson-Velskii and Landis' (AVL) Tree                        | Implemented      |
 | Disjoint Set (union-find)                                     | Implemented      |
 | Hash Table                                                    | Implemented      |
-| Bloom Filter                                                  | Pending          |
+| Bloom Filter                                                  | Implemented      |
+| Segment Tree                                                  | Implemented      |
+| Fenwick Tree (BIT)                                            | Pending          |
 | Suffix Array                                                  | Pending          |
 | Suffix Tree                                                   | Pending          |
 
@@ -130,7 +132,7 @@ Without these people, instead of little, I would know nothing about Algorithms. 
 
 ## Copyright
 
-© 2013-2014 Rodrigo Alves
+© 2013-2015 Rodrigo Alves
 
 [UVa]: http://uva.onlinejudge.org/
 [repo]: https://github.com/rodrigoalvesvieira/UVa
