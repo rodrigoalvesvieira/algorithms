@@ -132,7 +132,7 @@ Without these people, instead of little, I would know nothing about Algorithms. 
 
 ## Copyright
 
-© 2013-2015 Rodrigo Alves
+© 2013-2017 Rodrigo Alves
 
 [UVa]: http://uva.onlinejudge.org/
 [repo]: https://github.com/rodrigoalvesvieira/UVa
